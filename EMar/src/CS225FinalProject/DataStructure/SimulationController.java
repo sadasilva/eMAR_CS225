@@ -65,6 +65,8 @@ public class SimulationController implements Serializable {
 			classNames.add("CS225");
 			classNames.add("Nursing 101");
 		}
+                /* This is the previous code for creating a default load-out, in case
+                 * the code below this doesn't work.
 		if (scenarios.isEmpty()) {
 			Narrative sample = new Narrative("Test", "5", "OMG", "no", "Lovely");
 			ArrayList<Narrative> narratives = new ArrayList<Narrative>();
@@ -83,16 +85,17 @@ public class SimulationController implements Serializable {
 					new ArrayList<Medication>(), narratives), 15));
 
 			writeScenarios();
-		}
-                /* This should replace the if-statement just above once the method
-                 * addRandomizedScenario() has been written
+		} */
+                
+                /* This code should work with the addRandomizedScenario() method
+                 * to create a few default scenario loadouts if none are found. */
                 if (scenarios.isEmpty()) {
 			ArrayList<Narrative> narratives = new ArrayList<Narrative>();
                         ArrayList<Medication> medications = new ArrayList<Medication>();
 
-			scenarios.add(addRandomizedScenario());
-                        scenarios.add(addRandomizedScenario());
-			scenarios.add(addRandomizedScenario());
+			addRandomizedScenario();
+                        addRandomizedScenario();
+			addRandomizedScenario();
                         
                         for (Scenario s : scenarios)
                         {
@@ -103,7 +106,7 @@ public class SimulationController implements Serializable {
                         }
 
 			writeScenarios();
-		} */
+		}
 		for (User u : users)
 			System.out.println(u.getUserName() + "  /  " + u.getPassword());
 		for (String cn : classNames)
