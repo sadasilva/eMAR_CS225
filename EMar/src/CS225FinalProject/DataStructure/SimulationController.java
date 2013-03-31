@@ -84,6 +84,26 @@ public class SimulationController implements Serializable {
 
 			writeScenarios();
 		}
+                /* This should replace the if-statement just above once the method
+                 * addRandomizedScenario() has been written
+                if (scenarios.isEmpty()) {
+			ArrayList<Narrative> narratives = new ArrayList<Narrative>();
+                        ArrayList<Medication> medications = new ArrayList<Medication>();
+
+			scenarios.add(addRandomizedScenario());
+                        scenarios.add(addRandomizedScenario());
+			scenarios.add(addRandomizedScenario());
+                        
+                        for (Scenario s : scenarios)
+                        {
+                            for (Medication m : s.getMedicationList())
+                                medications.add(m);
+                            for (Narrative n : s.getNarrativeList())
+                                narratives.add(n);
+                        }
+
+			writeScenarios();
+		} */
 		for (User u : users)
 			System.out.println(u.getUserName() + "  /  " + u.getPassword());
 		for (String cn : classNames)

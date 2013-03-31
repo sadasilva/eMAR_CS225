@@ -364,6 +364,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
         professorLoginManager = new javax.swing.JPanel();
         currentProfessorPasswordLabel = new javax.swing.JLabel();
         changeProffesorPasswordButton = new javax.swing.JButton();
@@ -1072,6 +1073,14 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         jSeparator8.setOrientation(javax.swing.SwingConstants.VERTICAL);
         scenarioManagerPanel.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 30, 120));
 
+        jButton1.setText("Random Scenario");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        scenarioManagerPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, -1, -1));
+
         rootTabbedPane.addTab("Scenario Manager", scenarioManagerPanel);
 
         professorLoginManager.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1547,6 +1556,10 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
             showMessageDialog(this, "Please select a completed scenario", null,OK_OPTION);
 
     }//GEN-LAST:event_printCompletedScenarioButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        controller.addRandomizedScenario();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 	private void classListValueChanged(javax.swing.event.ListSelectionEvent evt) {
 		// change students based on selected class
@@ -2508,6 +2521,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
     private javax.swing.JButton exportScenarioButton;
     private javax.swing.JLabel importExportAreaLabel;
     private javax.swing.JButton importScenarioButton;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
