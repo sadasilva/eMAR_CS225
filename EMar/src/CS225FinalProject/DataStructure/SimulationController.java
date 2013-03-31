@@ -86,13 +86,16 @@ public class SimulationController implements Serializable {
 		}
                 /* This should replace the if-statement just above once the method
                  * addRandomizedScenario() has been written
+                 * Edit: changed the code to call addRandomScenario() only, rather
+                 * than expecting the method to return a scenario and then adding
+                 * that scenario to the scenarios ArrayList.
                 if (scenarios.isEmpty()) {
 			ArrayList<Narrative> narratives = new ArrayList<Narrative>();
                         ArrayList<Medication> medications = new ArrayList<Medication>();
 
-			scenarios.add(addRandomizedScenario());
-                        scenarios.add(addRandomizedScenario());
-			scenarios.add(addRandomizedScenario());
+			addRandomizedScenario();
+                        addRandomizedScenario();
+			addRandomizedScenario();
                         
                         for (Scenario s : scenarios)
                         {
