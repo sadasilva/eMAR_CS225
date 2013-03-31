@@ -1,0 +1,40 @@
+List of bugs/errors found
+
+1. Student log-in > Documentation > Insert a New Narrative is too large always overlaping with the information after the Narrative and on the same line such as Follow-Up and Initials. Requiring a second click on the View Selected Narrative to llok at all the information. See suggestion 1 below.
+
+2. If the password field is already correctly filled, the user types in his/her user name and presses the enter button, it simply goes to the password field, requiring the user to press enter again for it to log in.
+
+3. Instructor log-in> Student Manager > Add Student > allows addition of space character real name, space character user name and space character password. See suggestion 3 below.
+
+4. Instructor log-in> Student Manager > Add Class > allows addition of space character class name. See suggestion 3 below.
+
+5. Instructor log-in> Scenario Manager > Add Scenario > allows addition of space character and blank(null?) scenario. See suggestion 3 below.
+
+6. Instructor log-in> Scenario Manager > Documentation > same as error 1 above. See suggestion 1 below.
+ 
+7. The text field "User name:" not clearly visible at the log-in screen.
+
+8. Instructor log-in> Scenario Manager > Documentation > Add New Narrative When clicked a pop-up window shows up with a Save and Cancel option. Unfortunately it automatically saves so the Cancel button is useless.
+
+
+Typos(Will fix typo time permitting. Please change if you have the time. Thank you.)
+
+1. Instructor log-in> Student Manager > Add Student > When trying to add a student to no selected class: inorder
+
+2. Somewhere in one of the pop-ups, the word Please is written as PLease. I couldn't replicate the same pop-up so I didn't see the typo again but I could be wrong.
+
+
+
+Suggestions
+
+1. I suggest to possibly change the Narrative field into multiple smaller fields(possibly requiring addition of new classes) or making the Narrative user input a little smaller so it would fit in that one line. Otherwise the user must click on View Selected Narrative to read all narratives.
+
+2. It would be a good idea to only allow Date type input for the Date field(ie. Month/Day/Year); Time type input for the Time field(ie. Hour:Minute:Second); Boolean type input for the Folow Up(ie. Y/N) and two to three characters for Initials(ie. AS).
+
+3. Do not allow for space character or null input.
+
+4. Allow the professor to reset a student's password through a request password change option, only when requested to do so and not as a default option.
+
+
+
+
