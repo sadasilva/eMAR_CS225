@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.filechooser.*;
 
 import CS225FinalProject.SimulationManager;
 import CS225FinalProject.printer.SimulationPrinter;
@@ -53,7 +54,8 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 	private DefaultListModel sessionListModel;
 	private DefaultListModel studentListModel;
 	private DefaultListModel scenarioListModel;
-
+        
+        private int lastSelected;
 	private SimulationController controller = SimulationController
 			.getInstance();
         
@@ -224,6 +226,12 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 
 		loadClasses();
 		loadStudentsByClass();
+                rootTabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
+                     public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                        rootTabbedPaneStateChanged(evt);
+                    }
+                }); //!!HERE
+                lastSelected = 0;
 	}
 
 	private void loadClasses() {
@@ -860,7 +868,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Date", "Time", "Narrative", "Follow Up", "Initialls"
+                "Date", "Time", "Narrative", "Follow Up", "Initials"
             }
         ));
         documentationTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
@@ -1138,6 +1146,12 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 
     private void rootTabSelectionChanged(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_rootTabSelectionChanged
         // TODO add your handling code here:
+        if(rootTabbedPane.getSelectedComponent().equals(scenarioManagerPanel)){
+            int returnVal = JOptionPane.showConfirmDialog(this,"Save changes to Scenarios?","Confirm Save",JOptionPane.YES_NO_OPTION);
+            if(returnVal == JOptionPane.YES_OPTION){
+                 saveChangesButtonActionPerformed(null);
+            }
+        }
     }//GEN-LAST:event_rootTabSelectionChanged
 
     private void viewSelectedNarrativeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSelectedNarrativeButtonActionPerformed
@@ -1558,7 +1572,9 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_printCompletedScenarioButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        controller.addRandomizedScenario();
+        //controller.addRandomizedScenario();
+        ArrayList<Scenario> temp = controller.getScenarios();
+        scenarioListModel.addElement(temp.get(temp.size()-1).getPatientName());
     }//GEN-LAST:event_jButton1ActionPerformed
 
 	private void classListValueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -1763,7 +1779,14 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
             while(((DefaultTableModel)documentationTable.getModel()).getRowCount()>0)
             ((DefaultTableModel)documentationTable.getModel()).removeRow(0);
 	}
-
+private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {                                            
+        // TODO add your handling code here:
+        if(lastSelected == 1)
+        {
+            System.out.println("yup");
+        }
+        lastSelected = rootTabbedPane.getSelectedIndex();
+    }     
 	private void importScenarioButtonActionPerformed(
 			java.awt.event.ActionEvent evt) {
 		// TODO add your handling code here:
@@ -1773,20 +1796,28 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
             DataIO io = new DataIO();
             
             JFileChooser fileChooser = new JFileChooser();
+            FileFilter filter = new FileNameExtensionFilter(".LST Files","lst");
             if(JFileChooser.APPROVE_OPTION==fileChooser.showOpenDialog(this)){
                 
-                ArrayList<Scenario> scenarios = io.loadScenarioList(fileChooser.getSelectedFile().getAbsolutePath());
-                if(scenarios!= null){
-                controller.setScenarios(scenarios);
-                controller.writeScenarios();
-                rootTabbedPane.setSelectedIndex(0);
-                rootTabbedPane.setSelectedIndex(1);
-                if(scenarioList.getModel().getSize()>0)
-                    scenarioList.setSelectedIndex(0);
+                if(filter.accept(fileChooser.getSelectedFile()))
+                {
+                    ArrayList<Scenario> scenarios = io.loadScenarioList(fileChooser.getSelectedFile().getAbsolutePath());
+                    if(scenarios!= null){
+                        for(Scenario s : scenarios)
+                        {
+                            controller.getScenarios().add(s);
+                            controller.writeScenarios();
+                            rootTabbedPane.setSelectedIndex(0);
+                            rootTabbedPane.setSelectedIndex(1);
+                        }
+                    if(scenarioList.getModel().getSize()>0)
+                        scenarioList.setSelectedIndex(0);
+                    }
+                    else
+                        JOptionPane.showMessageDialog(this, "There were no Scenarios in this file.");
                 }
                 else
-                    JOptionPane.showMessageDialog(this, "This is not a valid file");
-                
+                    JOptionPane.showMessageDialog(this, "Incorrect file type.  Only .lst files are accepted.");
             }
             }
 	}
@@ -1797,11 +1828,19 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
             DataIO io = new DataIO();
             
             JFileChooser fileChooser = new JFileChooser();
-            if(JFileChooser.APPROVE_OPTION==fileChooser.showSaveDialog(this)){
-                io.writeScenarioList(fileChooser.getSelectedFile().getAbsolutePath()+".eMAR_ScenarioList",controller.getScenarios());
-                
-                
+            int returnVal = fileChooser.showSaveDialog(this);
+            if(JFileChooser.APPROVE_OPTION==returnVal){
+                if(fileChooser.getSelectedFile().exists())
+                {
+                    int n = JOptionPane.showConfirmDialog(this,fileChooser.getSelectedFile().getName() + " already exists, would you like to overwrite?","Overwrite Confirmation" ,JOptionPane.YES_NO_OPTION);
+                    if(n == JOptionPane.YES_OPTION){
+                        io.writeScenarioList(fileChooser.getSelectedFile().getAbsolutePath()+".lst",controller.getScenarios());
+                    }
+                }
+                else
+                    io.writeScenarioList(fileChooser.getSelectedFile().getAbsolutePath()+".lst",controller.getScenarios());
             }
+                
 	}
 
 	private void UndoAllChangesButtonActionPerformed(
@@ -1889,7 +1928,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 					.getSelectedIndex());// use this string wisely!!! :)
 			scenarioListModel.remove(scenarioList.getSelectedIndex());
 			if (scenarioListModel.getSize() == 0) {
-				previewTabbedPane.setVisible(false);
+				//previewTabbedPane.setVisible(false);
 			}
                         controller.removeScenarioByName(scenario);
                         if(((DefaultListModel)scenarioList.getModel()).size()>0)
@@ -1909,12 +1948,14 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 
 	private void addScenarioButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-		String scenarioName = JOptionPane.showInputDialog("Enter the name of the patient");
-		if (scenarioName != null) {
+		String scenarioName = JOptionPane.showInputDialog(this,"Enter a scenario name.");
+		if (scenarioName.length() != 0) {
                         controller.getScenarios().add(new Scenario(scenarioName));
                         controller.writeScenarios();
 			scenarioListModel.addElement(scenarioName);
 		}
+                else
+                    JOptionPane.showMessageDialog(this,"Must enter a name.");
 		scenarioList.setSelectedIndex(scenarioListModel.getSize() - 1);
 		if (!previewTabbedPane.isVisible()) {
 			previewTabbedPane.setVisible(true);
