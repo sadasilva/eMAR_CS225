@@ -538,6 +538,8 @@ public class SimulationController implements Serializable {
         int room = Integer.parseInt(s[num[3]]);
         int age =Integer.parseInt(s[num[4]]);
 
+	//return new Scenario("", "Input summary here...", new PatientRecord( s[num[0]], s[num[1]], s[num[2]],room,age, medications, narratives), 20);
+
         scenarios.add(new Scenario("", "Input summary here...", new PatientRecord( s[num[0]], s[num[1]], s[num[2]],room,age, medications, narratives), 20));
         this.writeScenarios();
         
