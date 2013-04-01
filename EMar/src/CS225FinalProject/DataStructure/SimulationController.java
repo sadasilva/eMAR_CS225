@@ -2,6 +2,7 @@ package CS225FinalProject.DataStructure;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * SimulationController This class has 3 responsibilities: -receive and resolve
@@ -467,6 +468,97 @@ public class SimulationController implements Serializable {
          */
     public void setScenarios(ArrayList<Scenario> scenarios) {
         this.scenarios = scenarios;
+    }
+    
+    /**
+     * Randomizes most values for the Scenario, then adds the Scenario
+     */
+    public void addRandomizedScenario() {
+        String[] s = dataIO.loadScenarioValueList();
+        int[] num = new int[20];
+        
+        
+        
+        for (int i = 0; i < s.length; i++) {
+
+            if(s[i].equals("__NAMES__")) {
+               readCore(i,s,num,0);
+            }
+            if(s[i].equals("__DIAGNOSIS__")) {
+               readCore(i,s,num,1);
+            }
+            if(s[i].equals("__ALLERGIES__")) {
+               readCore(i,s,num,2);
+            }
+            if(s[i].equals("__ROOM__")) {
+               readCore(i,s,num,3);
+            }
+            if(s[i].equals("__AGE__")) {
+               readCore(i,s,num,4);
+            }
+            if(s[i].equals("__MEDICATIONNAME__")) {
+               readCore(i,s,num,5);
+            }
+            if(s[i].equals("__DOSAGE__")) {
+               readCore(i,s,num,6);
+            }
+            if(s[i].equals("__MEDICATIONDUETIMES__")) {
+               readCore(i,s,num,7);
+            }
+            if(s[i].equals("__ROUTEOFMEDICATION__")) {
+               readCore(i,s,num,8);
+            }
+            if(s[i].equals("__DATE__")) {
+               readCore(i,s,num,9);
+            }
+            if(s[i].equals("__TIME__")) {
+               readCore(i,s,num,10);
+            }
+            if(s[i].equals("__FOLLOWUP__")) {
+               readCore(i,s,num,11);
+            }
+            if(s[i].equals("__INITALS__")) {
+               readCore(i,s,num,12);
+            }
+            
+            
+            
+            
+        }
+        Narrative nar = new Narrative(s[num[9]], s[num[10]], 
+                "\nTemperature:\nPulse:\nResp:\nBP:\nO2 Sat:\nPain Scale:\nFSBS:\nSite:\nRelated Diagnosis/Reason for medication:\n", 
+                s[num[11]], s[num[12]]);
+        
+	ArrayList<Narrative> narratives = new ArrayList<Narrative>();
+	narratives.add(nar);
+
+	ArrayList<Medication> medications = new ArrayList<Medication>();
+	medications.add(new Medication(s[num[5]], s[num[6]] + " units",s[num[8]], s[num[7]]));
+        
+        int room = Integer.parseInt(s[num[3]]);
+        int age =Integer.parseInt(s[num[4]]);
+
+        scenarios.add(new Scenario("", "Input summary here...", new PatientRecord( s[num[0]], s[num[1]], s[num[2]],room,age, medications, narratives), 20));
+        this.writeScenarios();
+        
+
+    }
+    
+    /**
+     * Used for less code use in addRandomizedScenario()
+    */
+    private void readCore(int i, String s[], int num[],int ranum) {
+        Random r = new Random();
+        int s_amount;
+        int e_amount;
+        int j = i;
+        s_amount = i + 1;
+        while (!s[j].equals("end")) {
+
+            j++;
+        }
+        e_amount = j;
+        num[ranum] = r.nextInt(e_amount - s_amount) + s_amount;
     }
         
 }
