@@ -1572,7 +1572,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_printCompletedScenarioButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //controller.addRandomizedScenario();
+        controller.addRandomizedScenario();
         ArrayList<Scenario> temp = controller.getScenarios();
         scenarioListModel.addElement(temp.get(temp.size()-1).getPatientName());
     }//GEN-LAST:event_jButton1ActionPerformed
