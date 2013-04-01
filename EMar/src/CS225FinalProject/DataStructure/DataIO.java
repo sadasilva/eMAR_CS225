@@ -2,9 +2,11 @@ package CS225FinalProject.DataStructure;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -31,6 +33,7 @@ public class DataIO {
 	private File userFile;
 	private File scenarioFile;
 	private File classNameFile;
+        private File scenarioValueFile;
 
 	private String password = "cs225yay";
 	private SecretKeyFactory keyFactory;
@@ -297,4 +300,36 @@ public class DataIO {
 			return false;
 		}
 	}
+        
+        /*
+         * Fetch characters from the scenariovalue file, then placing each
+         * line in an array and returning that array.
+         */
+    public String[] loadScenarioValueList() {
+        ArrayList<String> list = new ArrayList<String>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(scenarioValueFile));
+            
+            String line = reader.readLine();
+            while (line != null) {
+                if(!line.equals("")) {
+                    list.add(line);
+                }
+                line = reader.readLine();
+            }
+            
+        } catch (IOException e) {
+
+            System.out.println("Error Finding File:"
+                    + classNameFile.getAbsolutePath());
+
+            return null;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+        String[] arr = list.toArray(new String[0]);
+        return arr;
+    }
 }
