@@ -47,6 +47,7 @@ public class DataIO {
 		userFile = new File("users.lst");
 		scenarioFile = new File("scenarios.lst");
 		classNameFile = new File("classnames.lst");
+		scenarioValueFile = new File("scenariovalues.lst");
 		// completedScenarioFile = new File("completed.lst");
 
 		byte key[] = password.getBytes();
