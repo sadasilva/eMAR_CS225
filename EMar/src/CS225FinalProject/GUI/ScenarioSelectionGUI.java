@@ -69,6 +69,7 @@ public class ScenarioSelectionGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToolBar1 = new javax.swing.JToolBar();
         titleLabel = new javax.swing.JLabel();
         scenarioDescriptionScrollPanel = new javax.swing.JScrollPane();
         scenarioDescriptionPanel = new javax.swing.JPanel();
@@ -86,17 +87,18 @@ public class ScenarioSelectionGUI extends javax.swing.JFrame {
         logOutButton = new javax.swing.JButton();
         logoLabel = new javax.swing.JLabel();
 
+        jToolBar1.setRollover(true);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Scenario Selection");
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        titleLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        titleLabel.setFont(new java.awt.Font("Candara", 1, 26)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(255, 255, 255));
         titleLabel.setText("Scenario Selection");
-        getContentPane().add(titleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, -1, -1));
+        getContentPane().add(titleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, -1, -1));
 
         scenarioDescriptionPanel.setBackground(new java.awt.Color(200, 200, 200));
         scenarioDescriptionPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -215,7 +217,7 @@ public class ScenarioSelectionGUI extends javax.swing.JFrame {
 
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {
         if (JOptionPane.showConfirmDialog(this,
-                "Are you sure you want to log out?", null,
+                "Are you sure you want to logout?", null,
                 JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
             // System.exit(0);
             controller.writeClassNames();
@@ -320,6 +322,7 @@ public class ScenarioSelectionGUI extends javax.swing.JFrame {
     private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JButton logOutButton;
     private javax.swing.JLabel logoLabel;
     private javax.swing.JLabel patientNameLabel;
