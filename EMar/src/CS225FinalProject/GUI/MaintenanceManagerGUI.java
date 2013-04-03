@@ -42,6 +42,10 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.xml.crypto.Data;
 
+//!!KL
+import java.util.*;
+//KL
+
 import static javax.swing.JOptionPane.*;
 import sun.print.PageableDoc;
 
@@ -161,14 +165,17 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                     User student = null;
                     while(((DefaultTableModel) studentTable.getModel()).getRowCount()>0)
                         ((DefaultTableModel) studentTable.getModel()).removeRow(0);
+                    //!!KL
+                    // Ketty: Changed getRealName() to getUserName()
                     for(User user:  controller.getStudentsInClass((String)classList.getSelectedValue())){
-                        if(!user.isInstructor()&& user.getRealName().equals(studentList.getSelectedValue())&&
+                        if(!user.isInstructor()&& user.getUserName().equals(studentList.getSelectedValue())&&
                                 user.getClassName().equals(classList.getSelectedValue())){
                             student = user;
                             break;
                         }
                    
                     }
+                    //KL
                     if(student!=null){
                         int sum = 0;
                         int total = 0;
@@ -196,11 +203,18 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                     try{
                     SimulationScoreLabel.setText("Average Simulation Score: "+ (sum/total));
                     }
+                    //!!KL
+                    // Ketty: Caps change in Not Available.
                     catch(Exception exception){
-                         SimulationScoreLabel.setText("Average Simulation Score: "+ "not available");
+                         SimulationScoreLabel.setText("Average Simulation Score: "+ "Not Available");
                     }
+                    //KL
                     currentStudentUserNameLabel.setText(student.getUserName());
                     currentStudentPasswordLabel.setText(student.getPassword());
+                    //!!KL
+                    // Ketty: Added real name label.
+                    currentStudentRealNameLabel.setText(student.getRealName());
+                    //KL
                     studentNameLabel.setText(student.getRealName());
                     }
                     
@@ -251,7 +265,10 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 					&& !u.isInstructor()
 					&& classList.getSelectedValue().toString()
 							.equalsIgnoreCase(u.getClassName())) {
-				studentListModel.addElement((String) u.getRealName());
+                            //!!KL
+                            //Ketty: Changed getRealName() to getUserName()
+				studentListModel.addElement((String) u.getUserName());
+                            //KL
 			}
 		}
 	}
@@ -281,43 +298,70 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         studentList = new javax.swing.JList();
         classScrollPaneLabel = new javax.swing.JLabel();
         studentScrollPaneLabel = new javax.swing.JLabel();
+        //!!KL
         addClassButton = new javax.swing.JButton();
+        //!!KL
         addStudentButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        //!!KL
         removeClassButton = new javax.swing.JButton();
         removeStudentButton = new javax.swing.JButton();
-        removeAllButton = new javax.swing.JButton();
+        //!!KL
         jSeparator3 = new javax.swing.JSeparator();
+        //!!KL
         removalAreaLabel = new javax.swing.JLabel();
         selectionArealabel = new javax.swing.JLabel();
+        //!!KL
         addingAreaLabel = new javax.swing.JLabel();
         studentManagerControlTabbedPane = new javax.swing.JTabbedPane();
         classControlPanel = new javax.swing.JPanel();
         classControlScrollPane = new javax.swing.JScrollPane();
+        //!!KL
         classControlJTable = new javax.swing.JTable();
+        //!!KL
         averageClassScoreLabel = new javax.swing.JLabel();
+        //!!KL
         printAllStudentRecordsButton = new javax.swing.JButton();
         studentControlPanel = new javax.swing.JPanel();
         studentControlScrollPane = new javax.swing.JScrollPane();
         studentTable = new javax.swing.JTable();
+        //!!KL
         viewSelectedScenarioButton = new javax.swing.JButton();
         studentNameLabel = new javax.swing.JLabel();
-        printCompletedScenarioButton = new javax.swing.JButton();
         SimulationScoreLabel = new javax.swing.JLabel();
+        //!!KL
         changePasswordButton = new javax.swing.JButton();
+        //!!KL
         changeUserNameButton = new javax.swing.JButton();
+        //!!KL
         jSeparator6 = new javax.swing.JSeparator();
+        //!!KL
         LoginModLabel = new javax.swing.JLabel();
+        //!!KL
         currentStudentUserNameLabel = new javax.swing.JLabel();
+        //!!KL
         currentStudentPasswordLabel = new javax.swing.JLabel();
+        //!!KL
         SimResultsAreaLabel = new javax.swing.JLabel();
+        //!!KL
         setScenarioScoreButton = new javax.swing.JButton();
+        //!!KL
         jLabel3 = new javax.swing.JLabel();
+        //!!KL
         jLabel4 = new javax.swing.JLabel();
+        //!!KL
         editSelectedResultSuggestionButton = new javax.swing.JButton();
+        //!!KL
         deleteSelectedResultButton = new javax.swing.JButton();
+        //!!KL
         printSelectedStudentRecordButton = new javax.swing.JButton();
+        //!!KL
+        jLabel12 = new javax.swing.JLabel();
+        //!!KL
+        currentStudentRealNameLabel = new javax.swing.JLabel();
+        //!!KL
+        changeRealNameButton = new javax.swing.JButton();
         scenarioManagerPanel = new javax.swing.JPanel();
         scenarioScrollPanel = new javax.swing.JScrollPane();
         scenarioList = new javax.swing.JList();
@@ -435,7 +479,8 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 addClassButtonActionPerformed(evt);
             }
         });
-        studentManagerPanel.add(addClassButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 90, -1));
+        studentManagerPanel.add(addClassButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 130, -1));
+        //KL
 
         addStudentButton.setText("Add Student");
         addStudentButton.addActionListener(new java.awt.event.ActionListener() {
@@ -443,7 +488,8 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 addStudentButtonActionPerformed(evt);
             }
         });
-        studentManagerPanel.add(addStudentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
+        studentManagerPanel.add(addStudentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 130, -1));
+        //KL
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         studentManagerPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 0, 8, 180));
@@ -455,7 +501,8 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 removeClassButtonActionPerformed(evt);
             }
         });
-        studentManagerPanel.add(removeClassButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 120, -1));
+        studentManagerPanel.add(removeClassButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 130, -1));
+        //KL
 
         removeStudentButton.setText("Remove Student");
         removeStudentButton.addActionListener(new java.awt.event.ActionListener() {
@@ -463,74 +510,69 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 removeStudentButtonActionPerformed(evt);
             }
         });
-        studentManagerPanel.add(removeStudentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 150, -1, -1));
-
-        removeAllButton.setText("Remove All");
-        removeAllButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeAllButtonActionPerformed(evt);
-            }
-        });
-        studentManagerPanel.add(removeAllButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, 97, 66));
+        studentManagerPanel.add(removeStudentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 130, -1));
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        studentManagerPanel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 11, 180));
+        studentManagerPanel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 11, 180));
+        //KL
 
-        removalAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        removalAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 24));
         removalAreaLabel.setForeground(new java.awt.Color(255, 0, 0));
         removalAreaLabel.setText("Removal");
-        studentManagerPanel.add(removalAreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, -1));
+        studentManagerPanel.add(removalAreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, -1, -1));
+        //KL
 
-        selectionArealabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        selectionArealabel.setFont(new java.awt.Font("Tahoma", 0, 24));
         selectionArealabel.setText("Selection");
-        studentManagerPanel.add(selectionArealabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        studentManagerPanel.add(selectionArealabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        addingAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        addingAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 24));
         addingAreaLabel.setText("Adding");
         studentManagerPanel.add(addingAreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, -1));
+        //KL
 
         classControlJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Student Name", "Average Score", "Number of Simulations Completed"
+                "Student Name", "Student Username", "Average Score", "Number of Simulations Completed"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -543,10 +585,11 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         });
         classControlJTable.getTableHeader().setReorderingAllowed(false);
         classControlScrollPane.setViewportView(classControlJTable);
+        //KL
 
         averageClassScoreLabel.setText("Average Class Score:");
 
-        printAllStudentRecordsButton.setText("Print the Records of All Students of this Class");
+        printAllStudentRecordsButton.setText("Print All Student Records of Selected Class");
         printAllStudentRecordsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 printAllStudentRecordsButtonActionPerformed(evt);
@@ -559,27 +602,28 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
             classControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(classControlScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1025, Short.MAX_VALUE)
             .addGroup(classControlPanelLayout.createSequentialGroup()
-                .addGroup(classControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(classControlPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(averageClassScoreLabel))
-                    .addGroup(classControlPanelLayout.createSequentialGroup()
-                        .addGap(362, 362, 362)
-                        .addComponent(printAllStudentRecordsButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(362, 362, 362)
+                .addComponent(printAllStudentRecordsButton)
+                .addContainerGap(426, Short.MAX_VALUE))
+            .addGroup(classControlPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(averageClassScoreLabel)
+                .addContainerGap(912, Short.MAX_VALUE))
         );
         classControlPanelLayout.setVerticalGroup(
             classControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(classControlPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(classControlScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addGroup(classControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, classControlPanelLayout.createSequentialGroup()
-                        .addComponent(averageClassScoreLabel)
-                        .addGap(25, 25, 25))
-                    .addComponent(printAllStudentRecordsButton, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addGap(18, 18, 18)
+                .addComponent(averageClassScoreLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(printAllStudentRecordsButton)
+                .addContainerGap())
         );
+
+        //KL
+        //KL
 
         studentManagerControlTabbedPane.addTab("Class Control", classControlPanel);
 
@@ -626,7 +670,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -646,24 +690,17 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 
         studentControlPanel.add(studentControlScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1025, 222));
 
-        viewSelectedScenarioButton.setText("View Selected Completed Scenario Input");
+        viewSelectedScenarioButton.setText("View/Print Scenario Input");
         viewSelectedScenarioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewSelectedScenarioButtonActionPerformed(evt);
             }
         });
-        studentControlPanel.add(viewSelectedScenarioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 320, -1));
+        studentControlPanel.add(viewSelectedScenarioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 200, -1));
+        //KL
 
         studentNameLabel.setText("StudentName");
         studentControlPanel.add(studentNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 0, -1, -1));
-
-        printCompletedScenarioButton.setText("Print Selected Completed Scenario Result");
-        printCompletedScenarioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                printCompletedScenarioButtonActionPerformed(evt);
-            }
-        });
-        studentControlPanel.add(printCompletedScenarioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 320, -1));
 
         SimulationScoreLabel.setText("AVG Simulation Score");
         studentControlPanel.add(SimulationScoreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
@@ -674,7 +711,8 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 changePasswordButtonActionPerformed(evt);
             }
         });
-        studentControlPanel.add(changePasswordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 420, 190, -1));
+        studentControlPanel.add(changePasswordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 190, -1));
+        //KL
 
         changeUserNameButton.setText("Change Student Username");
         changeUserNameButton.addActionListener(new java.awt.event.ActionListener() {
@@ -682,64 +720,94 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 changeUserNameButtonActionPerformed(evt);
             }
         });
-        studentControlPanel.add(changeUserNameButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 330, 190, -1));
+        studentControlPanel.add(changeUserNameButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 190, -1));
+        //KL
 
         jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        studentControlPanel.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 250, 50, 202));
+        studentControlPanel.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 50, 202));
+        //KL
 
-        LoginModLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        LoginModLabel.setFont(new java.awt.Font("Tahoma", 0, 24));
         LoginModLabel.setText("Login Modification");
-        studentControlPanel.add(LoginModLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 250, -1, -1));
+        studentControlPanel.add(LoginModLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, -1, -1));
+        //KL
 
-        currentStudentUserNameLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        currentStudentUserNameLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
         currentStudentUserNameLabel.setText("current Username");
-        studentControlPanel.add(currentStudentUserNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 310, -1, -1));
+        studentControlPanel.add(currentStudentUserNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, -1, -1));
+        //KL
 
-        currentStudentPasswordLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        currentStudentPasswordLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
         currentStudentPasswordLabel.setText("current Password");
-        studentControlPanel.add(currentStudentPasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 400, -1, -1));
+        studentControlPanel.add(currentStudentPasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, -1, -1));
+        //KL
 
-        SimResultsAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        SimResultsAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 24));
         SimResultsAreaLabel.setText("Simulation Results");
-        studentControlPanel.add(SimResultsAreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, -1, -1));
+        studentControlPanel.add(SimResultsAreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
+        //KL
 
-        setScenarioScoreButton.setText("Set Score for the Selected Completed Scenario");
+        setScenarioScoreButton.setText("Grade Scenario");
         setScenarioScoreButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 setScenarioScoreButtonActionPerformed(evt);
             }
         });
-        studentControlPanel.add(setScenarioScoreButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 290, -1));
+        studentControlPanel.add(setScenarioScoreButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 200, -1));
+        //KL
 
         jLabel3.setText("Current Student Password");
-        studentControlPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 370, -1, -1));
+        studentControlPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, -1, -1));
+        //KL
 
         jLabel4.setText("Current Student Username");
-        studentControlPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 280, -1, -1));
+        studentControlPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, -1, -1));
+        //KL
 
-        editSelectedResultSuggestionButton.setText("Edit Selected Completed Scenario Suggestion");
+        editSelectedResultSuggestionButton.setText("Edit Suggestion");
         editSelectedResultSuggestionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editSelectedResultSuggestionButtonActionPerformed(evt);
             }
         });
-        studentControlPanel.add(editSelectedResultSuggestionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 290, -1));
+        studentControlPanel.add(editSelectedResultSuggestionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 200, -1));
+        //KL
 
-        deleteSelectedResultButton.setText("Delete Selected Completed Scenario");
+        deleteSelectedResultButton.setText("Delete Result");
         deleteSelectedResultButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteSelectedResultButtonActionPerformed(evt);
             }
         });
-        studentControlPanel.add(deleteSelectedResultButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 290, -1));
+        studentControlPanel.add(deleteSelectedResultButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 200, -1));
+        //KL
 
-        printSelectedStudentRecordButton.setText("Print this Student's Record");
+        printSelectedStudentRecordButton.setText("Print Current Student Record");
         printSelectedStudentRecordButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 printSelectedStudentRecordButtonActionPerformed(evt);
             }
         });
-        studentControlPanel.add(printSelectedStudentRecordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 320, -1));
+        studentControlPanel.add(printSelectedStudentRecordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 200, -1));
+        //KL
+
+        jLabel12.setText("Current Student Real Name");
+        studentControlPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 290, -1, -1));
+        //KL
+
+        currentStudentRealNameLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
+        currentStudentRealNameLabel.setText("current RealName");
+        studentControlPanel.add(currentStudentRealNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 310, -1, -1));
+        //KL
+
+        changeRealNameButton.setText("Change Student Name");
+        changeRealNameButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeRealNameButtonActionPerformed(evt);
+            }
+        });
+        studentControlPanel.add(changeRealNameButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 330, 190, -1));
+        //KL
 
         studentManagerControlTabbedPane.addTab("Student Control", studentControlPanel);
 
@@ -765,7 +833,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 
         scenarioManagerPanel.add(scenarioScrollPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 260, 76));
 
-        selectScenarioLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        selectScenarioLabel.setFont(new java.awt.Font("Tahoma", 0, 24));
         selectScenarioLabel.setText("Select Scenario to Edit");
         scenarioManagerPanel.add(selectScenarioLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
@@ -796,19 +864,19 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 
         marPanel.add(medScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 31, 932, 243));
 
-        roomNumLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        roomNumLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
         roomNumLabel.setText("Room:");
         marPanel.add(roomNumLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
-        diagnosisLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        diagnosisLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
         diagnosisLabel.setText("Diagnosis:");
         marPanel.add(diagnosisLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
 
-        patientNameLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        patientNameLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
         patientNameLabel.setText("Name:");
         marPanel.add(patientNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, -1, -1));
 
-        allergiesLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        allergiesLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
         allergiesLabel.setText("Allergies:");
         marPanel.add(allergiesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, -1, -1));
         marPanel.add(roomNumberTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 53, -1));
@@ -842,7 +910,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         });
         marPanel.add(removeMedicationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11));
         jLabel5.setText("Time limit in min:");
         marPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(764, 289, -1, -1));
         marPanel.add(timeTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(864, 286, 47, -1));
@@ -868,7 +936,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Date", "Time", "Narrative", "Follow Up", "Initials"
+                "Date", "Time", "Narrative", "Follow Up", "Initialls"
             }
         ));
         documentationTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
@@ -937,7 +1005,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(removeAllNarrativeButton))
                             .addComponent(jLabel11))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 212, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(documentationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(documentationPanelLayout.createSequentialGroup()
@@ -1049,7 +1117,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
         scenarioManagerPanel.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, 40, 120));
 
-        importExportAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        importExportAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 18));
         importExportAreaLabel.setText("Import and Export Scenario List");
         scenarioManagerPanel.add(importExportAreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, -1, -1));
 
@@ -1069,11 +1137,11 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         });
         scenarioManagerPanel.add(exportScenarioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 50, 110, 60));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel7.setText("Adding");
         scenarioManagerPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel8.setForeground(new java.awt.Color(255, 0, 0));
         jLabel8.setText("Removal");
         scenarioManagerPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, -1));
@@ -1131,7 +1199,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(logOutButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(962, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1266,7 +1334,10 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         
          if (medJTable.getSelectedRow() < 0)
-			JOptionPane.showMessageDialog(this, "Please select a medication to edit");
+                        //!!KL
+                        // Just added a period to sentence.
+			JOptionPane.showMessageDialog(this, "Please select a medication to edit.");
+                        //KL
                 
 		else {
 			final JDialog t = new JDialog(this,true);
@@ -1354,17 +1425,22 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 
             }
             else
-                JOptionPane.showMessageDialog(this,"Please make sure you have the selected student highlighted in the selection",null, JOptionPane.OK_OPTION);
+        //!!KL
+        // Ketty: Tweaked both sentences.
+                JOptionPane.showMessageDialog(this,"Please make sure you have the student highlighted in the selection list.",null, JOptionPane.OK_OPTION);
             
         }
         else
-            JOptionPane.showMessageDialog(this,"Please select a result to remove",null, JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(this,"Please select a result to remove.",null, JOptionPane.OK_OPTION);
+        //KL
     }//GEN-LAST:event_deleteSelectedResultButtonActionPerformed
 
     private void editSelectedResultSuggestionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSelectedResultSuggestionButtonActionPerformed
         // TODO add your handling code here:
         if (studentTable.getSelectedRow() < 0)
-			JOptionPane.showMessageDialog(this, "Please Select a Scenario Result");
+                        //!!KL
+			JOptionPane.showMessageDialog(this, "Please select a scenario suggestion to edit.");
+                        //KL
 		else {
    final Student student = controller.getStudentByNameAndClassroom((String)studentList.getSelectedValue(), (String)classList.getSelectedValue());
 
@@ -1455,8 +1531,10 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 
                                         new MessageFormat(
                                         "Completed Scenarios:"+student.getCompletedScenarios().size()+
-                                        " Average Score: "+ (student.getAverageScore()==null?"not available":student.getAverageScore()) + 
+                                        //!!KL
+                                        " Average Score: "+ (student.getAverageScore()==null?"Not Available":student.getAverageScore()) + 
                                         " Page - {0}"));
+                                        //KL
                                         job.setPrintable(printable, format);
                                         job.print();
                             }
@@ -1470,10 +1548,15 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 		}
             
         }
+        //!!KL
         else if(studentList.getModel().getSize()==0&&classList.getSelectedIndex()>-1)
-            showMessageDialog(this, "This class does not have any students to print.", null, OK_OPTION);
-        else if(classList.getSelectedIndex()<0)
-            showMessageDialog(this, "Please select a Classroom to print the Records of its students.", null, OK_OPTION);
+            showMessageDialog(this, "There are currently no student records to print from this class.", null, OK_OPTION);
+        else if(classList.getSelectedIndex()<0 && classList.getModel().getSize() > 0)
+            showMessageDialog(this, "Please select a class.", null, OK_OPTION);
+        //Ketty: Gives error when trying to print all records but there are none.
+        else if (classList.getModel().getSize() == 0)
+            showMessageDialog(this, "There are no classes to print records from.", "Error", OK_OPTION);
+        //KL
     }//GEN-LAST:event_printAllStudentRecordsButtonActionPerformed
 
     private void printSelectedStudentRecordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printSelectedStudentRecordButtonActionPerformed
@@ -1528,8 +1611,10 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                                 
                                 new MessageFormat(
                                 "Completed Scenarios:"+student.getCompletedScenarios().size()+
-                                " Average Score: "+ (student.getAverageScore()==null?"not available":student.getAverageScore()) + 
+                                //!!KL
+                                " Average Score: "+ (student.getAverageScore()==null?"Not Available":student.getAverageScore()) + 
                                 " Page - {0}"));
+                                //KL
                         
 			job.setPrintable(printable, format);
 			if (job.printDialog())
@@ -1554,29 +1639,52 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 
     
     
-    private void printCompletedScenarioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printCompletedScenarioButtonActionPerformed
-        // TODO add your handling code here:
-        if(studentTable.getSelectedRow()>-1 ){
-        SimulationPrinter.printCompletedScenario(
-                controller.getStudentByNameAndClassroom(
-                    (String)studentList.getSelectedValue(),
-                    (String)classList.getSelectedValue()),
-                studentTable.getSelectedRow());
-        }
-        else if(studentTable.getRowCount()==0){
-            showMessageDialog(this, "There is no scenarios to select", null,OK_OPTION);
-        }
-        else
-            showMessageDialog(this, "Please select a completed scenario", null,OK_OPTION);
-
-    }//GEN-LAST:event_printCompletedScenarioButtonActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         controller.addRandomizedScenario();
         ArrayList<Scenario> temp = controller.getScenarios();
         scenarioListModel.addElement(temp.get(temp.size()-1).getPatientName());
     }//GEN-LAST:event_jButton1ActionPerformed
 
+//!!KL
+// Added button to change student's real name.
+private void changeRealNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeRealNameButtonActionPerformed
+// TODO add your handling code here:
+    String realNamePattern = "[a-zA-Z \\-?]*";
+    
+    if(studentManagerControlTabbedPane.getSelectedIndex()==1 && studentList.getSelectedIndex()>-1){
+                    User student = null;
+                    for(User user:  controller.getStudentsInClass((String)classList.getSelectedValue())){
+                        //Ketty: Changed getRealName() to getUserName()
+                        if(!user.isInstructor()&& user.getUserName().equals(studentList.getSelectedValue())&&
+                                user.getClassName().equals(classList.getSelectedValue())){
+                            student = user;
+                            break;
+                        }
+                   
+                    }
+                    if(student!=null){
+                    
+                    String newRealName = JOptionPane.showInputDialog("Enter a new name:");
+                    if(newRealName!= null && newRealName.matches(realNamePattern)){
+                        if(!newRealName.equals("")) {
+                        student.setRealName(newRealName);
+                        }
+                        else{
+                            showMessageDialog(this,"Please enter an appropriate name.",null, OK_OPTION);
+                        }
+                        
+                        controller.writeUsers();
+                        studentManagerControlTabbedPane.setSelectedIndex(0);
+                        studentManagerControlTabbedPane.setSelectedIndex(1);
+                        
+                    }
+                    else
+                        showMessageDialog(this, "The Real Name field only allows letters, spaces and dashes.", "Error", OK_OPTION);
+                        
+                }
+    }
+}//GEN-LAST:event_changeRealNameButtonActionPerformed
+//KL
 	private void classListValueChanged(javax.swing.event.ListSelectionEvent evt) {
 		// change students based on selected class
 		loadStudentsByClass();
@@ -1588,6 +1696,10 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                for(User user:controller.getStudentsInClass((String)classList.getSelectedValue())){
                    ((DefaultTableModel)classControlJTable.getModel()).addRow(new Object[]{
                        user.getRealName(),
+                       //!!KL
+                       //Added username column to table.
+                       user.getUserName(),
+                       //KL
                       (((Student)user).getAverageScore() != null ? ((Student)user).getAverageScore():"not available"),
                        new Integer( ((Student)user).getCompletedScenarios().size())});
                    if(((Student)user).getAverageScore()!=null){
@@ -1623,15 +1735,14 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                         student.getCompletedScenarios().get(studentTable.getSelectedRow()).getStudentInput());
                 
             }
+            //!!KL
             else
-                JOptionPane.showMessageDialog(this,"Please make sure you have the selected student highlighted in the Selection",null, JOptionPane.OK_OPTION);
+                JOptionPane.showMessageDialog(this,"Please make sure you have the student highlighted in the selection list.",null, JOptionPane.OK_OPTION);
             
         }
         else
-            JOptionPane.showMessageDialog(this,"Please select a Result to view",null, JOptionPane.OK_OPTION);
-            
-            
-		
+            JOptionPane.showMessageDialog(this,"Please select a result to view/print.",null, JOptionPane.OK_OPTION);
+            //KL	
 	}
 
     public JTable getStudentTable() {
@@ -1648,8 +1759,10 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
             Student student = controller.getStudentByNameAndClassroom((String)studentList.getSelectedValue(), (String)classList.getSelectedValue());
             if(student!=null){
                 try{
-                    
-                String o = JOptionPane.showInputDialog(this,"Please enter the score for this result:");
+                //!!KL
+                // Ketty: Changed sentences in all four message dialogs.  
+                String o = JOptionPane.showInputDialog(this,"Please enter the numerical score for this result:");
+   
                 if(o!=null){
                 int score = Integer.parseInt(o);
                 student.getCompletedScenarios().get(studentTable.getSelectedRow()).setScore(score);
@@ -1662,7 +1775,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 
                 }
                 catch(NumberFormatException e){
-                    showMessageDialog(this, "Please enter a whole number. Setting the score is cancelled","Error", OK_OPTION);
+                    showMessageDialog(this, "Please enter a whole number only. Setting the score is cancelled.","Error", OK_OPTION);
                     return;
                 }
                 
@@ -1670,18 +1783,20 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 
             }
             else
-                JOptionPane.showMessageDialog(this,"Please make sure you have the selected student highlighted",null, JOptionPane.OK_OPTION);
-            
+                JOptionPane.showMessageDialog(this,"Please make sure you have the student highlighted in the selection list.",null, JOptionPane.OK_OPTION);
         }
         else
-            JOptionPane.showMessageDialog(this,"Please select a result to set the score",null, JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(this,"Please select a result to grade.",null, JOptionPane.OK_OPTION);
 	}
-
+        //KL
+        
 	private void ViewScenarioSuggestionButtonActionPerformed(
 			java.awt.event.ActionEvent evt) {
 		// TODO add your handling code here:
             if (studentTable.getSelectedRow() < 0)
-			JOptionPane.showMessageDialog(this, "Please select a completed scenario");
+                //!!KL
+			JOptionPane.showMessageDialog(this, "Please select a completed scenario from the list.");
+                //KL
 		else {
 			JDialog t = new JDialog(this,true);
                         t.setSize(400, 300);
@@ -1713,28 +1828,33 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 		// TODO add your handling code here:
             if(studentManagerControlTabbedPane.getSelectedIndex()==1 && studentList.getSelectedIndex()>-1){
                     User student = null;
-
+                    
+                    //!!KL
+                    
                     for(User user:  controller.getStudentsInClass((String)classList.getSelectedValue())){
-                        if(!user.isInstructor()&& user.getRealName().equals(studentList.getSelectedValue())&&
+                        //Ketty: Changed getRealName() to getUserName()
+                        if(!user.isInstructor()&& user.getUserName().equals(studentList.getSelectedValue())&&
                                 user.getClassName().equals(classList.getSelectedValue())){
                             student = user;
                             break;
                         }
                    
                     }
-                    if(student!=null){
                     
-                    String newUsername = JOptionPane.showInputDialog("Enter a new password");
+                    if(student!=null){
+                    // Ketty: Adjusted both message dialogs.
+                    String newUsername = JOptionPane.showInputDialog("Enter a new password:");
                     if(newUsername!= null){
                         if(!newUsername.equals(""))
                         student.setPassword(newUsername);
                         else{
-                            showMessageDialog(this,"Please enter an appropiate password",null, OK_OPTION);
+                            showMessageDialog(this,"Please enter an appropriate password.",null, OK_OPTION);
                         }
                         controller.writeUsers();
                         studentManagerControlTabbedPane.setSelectedIndex(0);
                         studentManagerControlTabbedPane.setSelectedIndex(1);
                     }
+                    //KL
                         
                     }
                 }
@@ -1859,7 +1979,11 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
 		// TODO add your handling code here:
 	}
 
-	private void removeAllButtonActionPerformed(java.awt.event.ActionEvent evt) {
+//!!KL
+// Deleted removeAll button. Commented out its code.
+//KL
+        
+/*	private void removeAllButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		int n = JOptionPane.showConfirmDialog(this,
 				"Are you sure you want to remove all student and class data?",
 				"Confirm Removal", JOptionPane.YES_NO_OPTION);
@@ -1877,7 +2001,7 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
 			controller.writeUsers();
 			loadStudentsByClass();
 		}
-	}
+	}*/
 
 	private void changeProffesorPasswordButtonActionPerformed(
 			java.awt.event.ActionEvent evt) {
@@ -2113,10 +2237,23 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
 	private void removeStudentButtonActionPerformed(
 			java.awt.event.ActionEvent evt) {
 
-            
+                //!!KL
 		if (studentList.getSelectedIndex() != -1) {
-                    if(JOptionPane.showConfirmDialog(this, "Are you sure you want to remove "+(String)studentList.getSelectedValue()+"?", null, JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION){
-                  String name = ((String)studentList.getSelectedValue());
+                    //Ketty: Added temp student object to obtain real name for use in JOptionPane window.
+                    // Edited second message dialog.
+                    User student = null;
+
+                    for(User user:  controller.getStudentsInClass((String)classList.getSelectedValue())){
+                        if(!user.isInstructor()&& user.getUserName().equals(studentList.getSelectedValue())&&
+                                user.getClassName().equals(classList.getSelectedValue())){
+                            student = user;
+                            break;
+                        }
+                    }
+                   if (student != null) {
+                    if(JOptionPane.showConfirmDialog(this, "Are you sure you want to remove "+student.getRealName()+"?", null, JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION){
+                    
+                    String name = ((String)studentList.getSelectedValue());
 
                     controller.removeStudentByNameAndClassroom(name,(String) classList.getSelectedValue());
                     studentList.clearSelection();
@@ -2124,22 +2261,28 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
                     classListValueChanged(null);
                     
                     }
-		}
+		}}
                 else
-                    JOptionPane.showMessageDialog(this, "Please select a student to remove", "Student Removal", JOptionPane.OK_OPTION);
+                    JOptionPane.showMessageDialog(this, "Please select a student to remove.", "Student Removal", JOptionPane.OK_OPTION);
             
 	}
-
+        //KL
+        
+        //!!KL
+        //Ketty: Added !classList.isSelectionEmpty() and "No classes currently available" dialog box.
 	private void addStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-           if(classList.getModel().getSize()>0){
+            if(classList.getModel().getSize()>0 && !classList.isSelectionEmpty()){
               AddStudentDialog t =  new AddStudentDialog(this,true); 
               
            }
+           else if (classList.getModel().getSize() < 0)
+               showMessageDialog(this, "No classes are currently available. To add a student, first create a class.", "No Class Error", OK_OPTION);
            else
-               showMessageDialog(this, "No Classrooms are available to add a student to", "No classroom Error", OK_OPTION);
+               showMessageDialog(this, "Please select which class you wish to add a student to.", null, OK_OPTION);
 	}
-
+        //KL
+        
 	private void addClassButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
 		// duplicate class name found should be handled
@@ -2179,25 +2322,35 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
                                 controller.writeUsers();
 				controller.writeClassNames();
 			} else {
-				System.out.println("class not removed!");
+       //!!KL
+       // Ketty: Both messages tweaked.
+				System.out.println("Class not removed!");
 				// class removal unsuccessful -try again!
+                                
 			}
 		}
             }
             else
-                JOptionPane.showMessageDialog(this, "Please select a class to remove", null, JOptionPane.OK_OPTION);
+                JOptionPane.showMessageDialog(this, "Please select a class to remove.", null, JOptionPane.OK_OPTION);
 	}
-
+        //KL
+        
         /**
          * this needs to validate if there is another username instance before changing username
          * @param evt 
          */
+        
+        //!!KL
 	private void changeUserNameButtonActionPerformed(
 			java.awt.event.ActionEvent evt) {
+            // Ketty: Added userNamePattern. Indicates which characters are allowed to be inputted.
+            String userNamePattern = "[a-zA-Z0-9\\.?\\_?]*";
+            
             if(studentManagerControlTabbedPane.getSelectedIndex()==1 && studentList.getSelectedIndex()>-1){
                     User student = null;
                     for(User user:  controller.getStudentsInClass((String)classList.getSelectedValue())){
-                        if(!user.isInstructor()&& user.getRealName().equals(studentList.getSelectedValue())&&
+                        // Ketty: Changed getRealName() to getUserName()
+                        if(!user.isInstructor()&& user.getUserName().equals(studentList.getSelectedValue())&&
                                 user.getClassName().equals(classList.getSelectedValue())){
                             student = user;
                             break;
@@ -2214,15 +2367,18 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
 //                        
 //                    }
                     
-                    String newUsername = JOptionPane.showInputDialog("Enter a new username");
-                    if(newUsername!= null){
+                    // Ketty: Edited the following three dialog messages and added a fourth one.
+                    // Also added "newUsername.matches..." in following if statement.
+                    String newUsername = JOptionPane.showInputDialog("Enter a new username:");
+                   
+                    if(newUsername!= null && newUsername.matches(userNamePattern)){
                         if(controller.isUserNameAvailable(newUsername)){
                         
                         
                         if(!newUsername.equals(""))
                         student.setUserName(newUsername);
                         else{
-                            showMessageDialog(this,"Please enter an appropiate username",null, OK_OPTION);
+                            showMessageDialog(this,"Please enter an appropriate username.",null, OK_OPTION);
                         }
                         
                         controller.writeUsers();
@@ -2230,14 +2386,17 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
                         studentManagerControlTabbedPane.setSelectedIndex(1);
                         }
                         else
-                            showMessageDialog(this,"This username is already being used",null,OK_OPTION);
+                            showMessageDialog(this,"Sorry, this username is already in use.",null,OK_OPTION);
                     }
+                    else
+                        showMessageDialog(this, "The Username field only allows letters, numbers, periods and underscores.", "Error", OK_OPTION);
                         
                     }
                 }
             
 	}
-
+       //KL
+        
 	/**
 	 * @param args
 	 *            the command line arguments
@@ -2344,10 +2503,15 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
         /**
         * Creates new form AddStudentDialog
         */
+        
+        //!!KL
+        // Ketty: Commented out any classListS; we are not using a class list within the AddStudentDialog anymore.
+        //KL
+        
         public AddStudentDialog(java.awt.Frame parent, boolean modal) {
             super(parent, modal);
             initComponents();
-            classListS.setListData(((DefaultListModel)classList.getModel()).toArray());
+           // classListS.setListData(((DefaultListModel)classList.getModel()).toArray());
             setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
             setLocation(
 					(getToolkit().getScreenSize().width - this.getWidth()) / 2,
@@ -2362,17 +2526,21 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
         */
         @SuppressWarnings("unchecked")
         // <editor-fold defaultstate="collapsed" desc="Generated Code">
+        //!!KL
         private void initComponents() {
 
+            // Ketty: Commented out jLabel4, jScrollPanel and classListS.
+            // Anything having to do with them is also commented out.
+            
             jLabel1 = new javax.swing.JLabel();
             studentRealNameTextField = new javax.swing.JTextField();
             jLabel2 = new javax.swing.JLabel();
             studentUserNameTextField = new javax.swing.JTextField();
             jLabel3 = new javax.swing.JLabel();
             studentPasswordTextField = new javax.swing.JTextField();
-            jLabel4 = new javax.swing.JLabel();
-            jScrollPane1 = new javax.swing.JScrollPane();
-            classListS = new javax.swing.JList();
+           // jLabel4 = new javax.swing.JLabel();
+           // jScrollPane1 = new javax.swing.JScrollPane();
+           // classListS = new javax.swing.JList();
             addStudentButton = new javax.swing.JButton();
             cancelButton = new javax.swing.JButton();
 
@@ -2386,7 +2554,7 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
 
             jLabel3.setText("Desired Password:");
 
-            jLabel4.setText("Class:");
+            /*jLabel4.setText("Class:");
 
             classListS.setModel(new javax.swing.AbstractListModel() {
                 String[] strings = { };
@@ -2394,7 +2562,7 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
                 public Object getElementAt(int i) { return strings[i]; }
             });
             classListS.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-            jScrollPane1.setViewportView(classListS);
+            jScrollPane1.setViewportView(classListS);*/
 
             addStudentButton.setText("Add Student");
             addStudentButton.addActionListener(new java.awt.event.ActionListener() {
@@ -2428,7 +2596,7 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(14, 14, 14)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4)
+                              //  .addComponent(jLabel4)
                                 .addComponent(jLabel3))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2437,7 +2605,7 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
                                     .addGap(18, 18, 18)
                                     .addComponent(cancelButton)
                                     .addGap(0, 0, Short.MAX_VALUE))
-                                .addComponent(jScrollPane1)
+                               // .addComponent(jScrollPane1)
                                 .addComponent(studentPasswordTextField))))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
@@ -2458,8 +2626,9 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
                         .addComponent(studentPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel4)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      //  .addComponent(jLabel4)
+                      //  .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    )
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(addStudentButton)
@@ -2470,51 +2639,75 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
             pack();
         }// </editor-fold>
 
+        //!!KL
         private void addStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {
-            if(!studentRealNameTextField.getText().isEmpty()&& 
-               !studentUserNameTextField.getText().isEmpty()&&
+            String realNamePattern = "[a-zA-Z \\-?]*";
+            String userNamePattern = "[a-zA-Z0-9\\.?\\_?]*";
+            
+            if(!studentRealNameTextField.getText().isEmpty()&& studentRealNameTextField.getText().matches(realNamePattern) &&
+               !studentUserNameTextField.getText().isEmpty()&& studentUserNameTextField.getText().matches(userNamePattern) &&
                !studentPasswordTextField.getText().isEmpty() &&
-                classListS.getSelectedIndex()>-1)
+              // Ketty: Edited classListS to select from classList instead. Anywhere you see a line with classList used to be classListS.
+                classList.getSelectedIndex()>-1)
             {
                 boolean isUsernameAvailable = controller.isUserNameAvailable(studentUserNameTextField.getText());
                 if(isUsernameAvailable){
                     controller.addStudent(
                             studentUserNameTextField.getText(),
                             studentRealNameTextField.getText(), 
-                            studentPasswordTextField.getText(), 
-                            (String)classListS.getSelectedValue());
+                            studentPasswordTextField.getText(),
+                            // classListS
+                            (String)classList.getSelectedValue());
                     controller.writeUsers();
-                    int classIndex = classListS.getSelectedIndex();
+                    // classListS
+                    int classIndex = classList.getSelectedIndex();
                     classList.clearSelection();
                     classList.setSelectedIndex(classIndex);
                     
                     dispose();
                 }
                 else{
-                    showMessageDialog(this, "The username provided is not available. Please provide another ","Username not available", OK_OPTION);
+                    showMessageDialog(this, "The username provided is not available. Please provide another.","Username Not Available", OK_OPTION);
                 }   
             }
-            else{
-                showMessageDialog(this, "Please fill all required fields inorder to add a student","error", OK_OPTION);  
-            }
+            
+            // Ketty: Different dialogs for different errors.
+            
+            else if (studentRealNameTextField.getText().isEmpty() ||
+                     studentUserNameTextField.getText().isEmpty() ||
+                     studentPasswordTextField.getText().isEmpty()
+                    )
+                showMessageDialog(this, "Please fill in all required fields in order to add a student.","Error", OK_OPTION);
+            else if (!studentRealNameTextField.getText().matches(realNamePattern))
+                showMessageDialog(this, "The Real Name field only allows letters, spaces and dashes.", "Error", OK_OPTION);
+            else if (!studentUserNameTextField.getText().matches(userNamePattern))
+                showMessageDialog(this, "The Username field only allows letters, numbers, periods and underscores.", "Error", OK_OPTION);
         }
+        //KL
 
         private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
             dispose();
         }
         // Variables declaration - do not modify
+        
+        //!!KL
+        /* Ketty: Modified to remove jScrollPanel list of classes.
+           Classes should be selected in the class selection field only from now on. */
+        
         private javax.swing.JButton addStudentButton;
         private javax.swing.JButton cancelButton;
-        private javax.swing.JList classListS;
+       // private javax.swing.JList classListS;
         private javax.swing.JLabel jLabel1;
         private javax.swing.JLabel jLabel2;
         private javax.swing.JLabel jLabel3;
-        private javax.swing.JLabel jLabel4;
-        private javax.swing.JScrollPane jScrollPane1;
+       // private javax.swing.JLabel jLabel4;
+       // private javax.swing.JScrollPane jScrollPane1;
         private javax.swing.JTextField studentPasswordTextField;
         private javax.swing.JTextField studentRealNameTextField;
         private javax.swing.JTextField studentUserNameTextField;
         // End of variables declaration
+        
+        //KL
     }
         
 
@@ -2536,6 +2729,7 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
     private javax.swing.JLabel averageClassScoreLabel;
     private javax.swing.JButton changePasswordButton;
     private javax.swing.JButton changeProffesorPasswordButton;
+    private javax.swing.JButton changeRealNameButton;
     private javax.swing.JButton changeUserNameButton;
     private javax.swing.JTable classControlJTable;
     private javax.swing.JPanel classControlPanel;
@@ -2547,6 +2741,7 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
     private javax.swing.JLabel currentProfessorPasswordLabel;
     private javax.swing.JLabel currentProfessorUserNameLabel;
     private javax.swing.JLabel currentStudentPasswordLabel;
+    private javax.swing.JLabel currentStudentRealNameLabel;
     private javax.swing.JLabel currentStudentUserNameLabel;
     private javax.swing.JButton deleteNarrativeButton;
     private javax.swing.JButton deleteSelectedResultButton;
@@ -2566,6 +2761,7 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -2590,11 +2786,9 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
     private javax.swing.JTextField patientNameTextField;
     private javax.swing.JTabbedPane previewTabbedPane;
     private javax.swing.JButton printAllStudentRecordsButton;
-    private javax.swing.JButton printCompletedScenarioButton;
     private javax.swing.JButton printSelectedStudentRecordButton;
     private javax.swing.JPanel professorLoginManager;
     private javax.swing.JLabel removalAreaLabel;
-    private javax.swing.JButton removeAllButton;
     private javax.swing.JButton removeAllNarrativeButton;
     private javax.swing.JButton removeClassButton;
     private javax.swing.JButton removeMedicationButton;
