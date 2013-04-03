@@ -1718,7 +1718,7 @@ private void studentManagerPanelPropertyChange(java.beans.PropertyChangeEvent ev
 
     private void allergiesTextAreaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_allergiesTextAreaKeyPressed
         // TODO add your handling code here:
-        hasChanged = true;
+        hasChanged = true; 
     }//GEN-LAST:event_allergiesTextAreaKeyPressed
 //JR
     //KL
