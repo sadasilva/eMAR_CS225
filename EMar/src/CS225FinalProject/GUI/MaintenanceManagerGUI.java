@@ -291,77 +291,6 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         rootTabbedPane = new javax.swing.JTabbedPane();
-        studentManagerPanel = new javax.swing.JPanel();
-        classScrollPane = new javax.swing.JScrollPane();
-        classList = new javax.swing.JList();
-        studentScrollPane = new javax.swing.JScrollPane();
-        studentList = new javax.swing.JList();
-        classScrollPaneLabel = new javax.swing.JLabel();
-        studentScrollPaneLabel = new javax.swing.JLabel();
-        //!!KL
-        addClassButton = new javax.swing.JButton();
-        //!!KL
-        addStudentButton = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        //!!KL
-        removeClassButton = new javax.swing.JButton();
-        removeStudentButton = new javax.swing.JButton();
-        //!!KL
-        jSeparator3 = new javax.swing.JSeparator();
-        //!!KL
-        removalAreaLabel = new javax.swing.JLabel();
-        selectionArealabel = new javax.swing.JLabel();
-        //!!KL
-        addingAreaLabel = new javax.swing.JLabel();
-        studentManagerControlTabbedPane = new javax.swing.JTabbedPane();
-        classControlPanel = new javax.swing.JPanel();
-        classControlScrollPane = new javax.swing.JScrollPane();
-        //!!KL
-        classControlJTable = new javax.swing.JTable();
-        //!!KL
-        averageClassScoreLabel = new javax.swing.JLabel();
-        //!!KL
-        printAllStudentRecordsButton = new javax.swing.JButton();
-        studentControlPanel = new javax.swing.JPanel();
-        studentControlScrollPane = new javax.swing.JScrollPane();
-        studentTable = new javax.swing.JTable();
-        //!!KL
-        viewSelectedScenarioButton = new javax.swing.JButton();
-        studentNameLabel = new javax.swing.JLabel();
-        SimulationScoreLabel = new javax.swing.JLabel();
-        //!!KL
-        changePasswordButton = new javax.swing.JButton();
-        //!!KL
-        changeUserNameButton = new javax.swing.JButton();
-        //!!KL
-        jSeparator6 = new javax.swing.JSeparator();
-        //!!KL
-        LoginModLabel = new javax.swing.JLabel();
-        //!!KL
-        currentStudentUserNameLabel = new javax.swing.JLabel();
-        //!!KL
-        currentStudentPasswordLabel = new javax.swing.JLabel();
-        //!!KL
-        SimResultsAreaLabel = new javax.swing.JLabel();
-        //!!KL
-        setScenarioScoreButton = new javax.swing.JButton();
-        //!!KL
-        jLabel3 = new javax.swing.JLabel();
-        //!!KL
-        jLabel4 = new javax.swing.JLabel();
-        //!!KL
-        editSelectedResultSuggestionButton = new javax.swing.JButton();
-        //!!KL
-        deleteSelectedResultButton = new javax.swing.JButton();
-        //!!KL
-        printSelectedStudentRecordButton = new javax.swing.JButton();
-        //!!KL
-        jLabel12 = new javax.swing.JLabel();
-        //!!KL
-        currentStudentRealNameLabel = new javax.swing.JLabel();
-        //!!KL
-        changeRealNameButton = new javax.swing.JButton();
         scenarioManagerPanel = new javax.swing.JPanel();
         scenarioScrollPanel = new javax.swing.JScrollPane();
         scenarioList = new javax.swing.JList();
@@ -423,6 +352,78 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         currentProfessorUserNameLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        studentManagerPanel = new javax.swing.JPanel();
+        classScrollPane = new javax.swing.JScrollPane();
+        classList = new javax.swing.JList();
+        studentScrollPane = new javax.swing.JScrollPane();
+        studentList = new javax.swing.JList();
+        classScrollPaneLabel = new javax.swing.JLabel();
+        studentScrollPaneLabel = new javax.swing.JLabel();
+        //!!KL
+        addClassButton = new javax.swing.JButton();
+        //!!KL
+        addStudentButton = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        //!!KL
+        removeClassButton = new javax.swing.JButton();
+        //!!KL
+        removeStudentButton = new javax.swing.JButton();
+        //!!KL
+        jSeparator3 = new javax.swing.JSeparator();
+        //!!KL
+        removalAreaLabel = new javax.swing.JLabel();
+        selectionArealabel = new javax.swing.JLabel();
+        //!!KL
+        addingAreaLabel = new javax.swing.JLabel();
+        studentManagerControlTabbedPane = new javax.swing.JTabbedPane();
+        classControlPanel = new javax.swing.JPanel();
+        classControlScrollPane = new javax.swing.JScrollPane();
+        //!!KL
+        classControlJTable = new javax.swing.JTable();
+        //!!KL
+        averageClassScoreLabel = new javax.swing.JLabel();
+        //!!KL
+        printAllStudentRecordsButton = new javax.swing.JButton();
+        studentControlPanel = new javax.swing.JPanel();
+        studentControlScrollPane = new javax.swing.JScrollPane();
+        //!!KL
+        studentTable = new javax.swing.JTable();
+        //!!KL
+        viewSelectedScenarioButton = new javax.swing.JButton();
+        studentNameLabel = new javax.swing.JLabel();
+        SimulationScoreLabel = new javax.swing.JLabel();
+        //!!KL
+        changePasswordButton = new javax.swing.JButton();
+        //!!KL
+        changeUserNameButton = new javax.swing.JButton();
+        //!!KL
+        jSeparator6 = new javax.swing.JSeparator();
+        LoginModLabel = new javax.swing.JLabel();
+        //!!KL
+        currentStudentUserNameLabel = new javax.swing.JLabel();
+        //!!KL
+        currentStudentPasswordLabel = new javax.swing.JLabel();
+        //!!KL
+        SimResultsAreaLabel = new javax.swing.JLabel();
+        //!!KL
+        setScenarioScoreButton = new javax.swing.JButton();
+        //!!KL
+        jLabel3 = new javax.swing.JLabel();
+        //!!KL
+        jLabel4 = new javax.swing.JLabel();
+        //!!KL
+        editSelectedResultSuggestionButton = new javax.swing.JButton();
+        //!!KL
+        deleteSelectedResultButton = new javax.swing.JButton();
+        //!!KL
+        printSelectedStudentRecordButton = new javax.swing.JButton();
+        //!!KL
+        jLabel12 = new javax.swing.JLabel();
+        //!!KL
+        currentStudentRealNameLabel = new javax.swing.JLabel();
+        //!!KL
+        changeRealNameButton = new javax.swing.JButton();
         logOutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -430,390 +431,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         setResizable(false);
 
         rootTabbedPane.setPreferredSize(new java.awt.Dimension(1037, 727));
-        rootTabbedPane.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                rootTabSelectionChanged(evt);
-            }
-        });
-
-        studentManagerPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        sessionListModel = new DefaultListModel();
-        classList.setModel(
-            sessionListModel
-        );
-        classList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        classList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                classListValueChanged(evt);
-            }
-        });
-        classList.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                classListFocusGained(evt);
-            }
-        });
-        classScrollPane.setViewportView(classList);
-
-        studentManagerPanel.add(classScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 55, 150, 120));
-
-        studentList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        studentList.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                studentListFocusGained(evt);
-            }
-        });
-        studentScrollPane.setViewportView(studentList);
-
-        studentManagerPanel.add(studentScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 55, 200, 120));
-
-        classScrollPaneLabel.setText("Class");
-        studentManagerPanel.add(classScrollPaneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
-
-        studentScrollPaneLabel.setText("Student");
-        studentManagerPanel.add(studentScrollPaneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
-
-        addClassButton.setText("Add Class");
-        addClassButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addClassButtonActionPerformed(evt);
-            }
-        });
-        studentManagerPanel.add(addClassButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 130, -1));
-        //KL
-
-        addStudentButton.setText("Add Student");
-        addStudentButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addStudentButtonActionPerformed(evt);
-            }
-        });
-        studentManagerPanel.add(addStudentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 130, -1));
-        //KL
-
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        studentManagerPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 0, 8, 180));
-        studentManagerPanel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 183, 1032, 10));
-
-        removeClassButton.setText("Remove Class");
-        removeClassButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeClassButtonActionPerformed(evt);
-            }
-        });
-        studentManagerPanel.add(removeClassButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 130, -1));
-        //KL
-
-        removeStudentButton.setText("Remove Student");
-        removeStudentButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeStudentButtonActionPerformed(evt);
-            }
-        });
-        studentManagerPanel.add(removeStudentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 130, -1));
-
-        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        studentManagerPanel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 11, 180));
-        //KL
-
-        removalAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 24));
-        removalAreaLabel.setForeground(new java.awt.Color(255, 0, 0));
-        removalAreaLabel.setText("Removal");
-        studentManagerPanel.add(removalAreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, -1, -1));
-        //KL
-
-        selectionArealabel.setFont(new java.awt.Font("Tahoma", 0, 24));
-        selectionArealabel.setText("Selection");
-        studentManagerPanel.add(selectionArealabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
-        addingAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 24));
-        addingAreaLabel.setText("Adding");
-        studentManagerPanel.add(addingAreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, -1));
-        //KL
-
-        classControlJTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Student Name", "Student Username", "Average Score", "Number of Simulations Completed"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        classControlJTable.getTableHeader().setReorderingAllowed(false);
-        classControlScrollPane.setViewportView(classControlJTable);
-        //KL
-
-        averageClassScoreLabel.setText("Average Class Score:");
-
-        printAllStudentRecordsButton.setText("Print All Student Records of Selected Class");
-        printAllStudentRecordsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                printAllStudentRecordsButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout classControlPanelLayout = new javax.swing.GroupLayout(classControlPanel);
-        classControlPanel.setLayout(classControlPanelLayout);
-        classControlPanelLayout.setHorizontalGroup(
-            classControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(classControlScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1025, Short.MAX_VALUE)
-            .addGroup(classControlPanelLayout.createSequentialGroup()
-                .addGap(362, 362, 362)
-                .addComponent(printAllStudentRecordsButton)
-                .addContainerGap(426, Short.MAX_VALUE))
-            .addGroup(classControlPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(averageClassScoreLabel)
-                .addContainerGap(912, Short.MAX_VALUE))
-        );
-        classControlPanelLayout.setVerticalGroup(
-            classControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(classControlPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(classControlScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(averageClassScoreLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(printAllStudentRecordsButton)
-                .addContainerGap())
-        );
-
-        //KL
-        //KL
-
-        studentManagerControlTabbedPane.addTab("Class Control", classControlPanel);
-
-        studentControlPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        studentTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Name of Completed Scenario", "DateTaken", "Suggestion", "Score"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, true, true
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        studentTable.getTableHeader().setReorderingAllowed(false);
-        studentControlScrollPane.setViewportView(studentTable);
-        studentTable.getColumnModel().getColumn(0).setResizable(false);
-        studentTable.getColumnModel().getColumn(1).setResizable(false);
-        studentTable.getColumnModel().getColumn(2).setResizable(false);
-        studentTable.getColumnModel().getColumn(3).setResizable(false);
-
-        studentControlPanel.add(studentControlScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1025, 222));
-
-        viewSelectedScenarioButton.setText("View/Print Scenario Input");
-        viewSelectedScenarioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewSelectedScenarioButtonActionPerformed(evt);
-            }
-        });
-        studentControlPanel.add(viewSelectedScenarioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 200, -1));
-        //KL
-
-        studentNameLabel.setText("StudentName");
-        studentControlPanel.add(studentNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 0, -1, -1));
-
-        SimulationScoreLabel.setText("AVG Simulation Score");
-        studentControlPanel.add(SimulationScoreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
-
-        changePasswordButton.setText("Change Student Password");
-        changePasswordButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                changePasswordButtonActionPerformed(evt);
-            }
-        });
-        studentControlPanel.add(changePasswordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 190, -1));
-        //KL
-
-        changeUserNameButton.setText("Change Student Username");
-        changeUserNameButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                changeUserNameButtonActionPerformed(evt);
-            }
-        });
-        studentControlPanel.add(changeUserNameButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 190, -1));
-        //KL
-
-        jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        studentControlPanel.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 50, 202));
-        //KL
-
-        LoginModLabel.setFont(new java.awt.Font("Tahoma", 0, 24));
-        LoginModLabel.setText("Login Modification");
-        studentControlPanel.add(LoginModLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, -1, -1));
-        //KL
-
-        currentStudentUserNameLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
-        currentStudentUserNameLabel.setText("current Username");
-        studentControlPanel.add(currentStudentUserNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, -1, -1));
-        //KL
-
-        currentStudentPasswordLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
-        currentStudentPasswordLabel.setText("current Password");
-        studentControlPanel.add(currentStudentPasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, -1, -1));
-        //KL
-
-        SimResultsAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 24));
-        SimResultsAreaLabel.setText("Simulation Results");
-        studentControlPanel.add(SimResultsAreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
-        //KL
-
-        setScenarioScoreButton.setText("Grade Scenario");
-        setScenarioScoreButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                setScenarioScoreButtonActionPerformed(evt);
-            }
-        });
-        studentControlPanel.add(setScenarioScoreButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 200, -1));
-        //KL
-
-        jLabel3.setText("Current Student Password");
-        studentControlPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, -1, -1));
-        //KL
-
-        jLabel4.setText("Current Student Username");
-        studentControlPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, -1, -1));
-        //KL
-
-        editSelectedResultSuggestionButton.setText("Edit Suggestion");
-        editSelectedResultSuggestionButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editSelectedResultSuggestionButtonActionPerformed(evt);
-            }
-        });
-        studentControlPanel.add(editSelectedResultSuggestionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 200, -1));
-        //KL
-
-        deleteSelectedResultButton.setText("Delete Result");
-        deleteSelectedResultButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteSelectedResultButtonActionPerformed(evt);
-            }
-        });
-        studentControlPanel.add(deleteSelectedResultButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 200, -1));
-        //KL
-
-        printSelectedStudentRecordButton.setText("Print Current Student Record");
-        printSelectedStudentRecordButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                printSelectedStudentRecordButtonActionPerformed(evt);
-            }
-        });
-        studentControlPanel.add(printSelectedStudentRecordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 200, -1));
-        //KL
-
-        jLabel12.setText("Current Student Real Name");
-        studentControlPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 290, -1, -1));
-        //KL
-
-        currentStudentRealNameLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
-        currentStudentRealNameLabel.setText("current RealName");
-        studentControlPanel.add(currentStudentRealNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 310, -1, -1));
-        //KL
-
-        changeRealNameButton.setText("Change Student Name");
-        changeRealNameButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                changeRealNameButtonActionPerformed(evt);
-            }
-        });
-        studentControlPanel.add(changeRealNameButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 330, 190, -1));
-        //KL
-
-        studentManagerControlTabbedPane.addTab("Student Control", studentControlPanel);
-
-        studentManagerPanel.add(studentManagerControlTabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 1030, 490));
-
-        rootTabbedPane.addTab("Student Manager", studentManagerPanel);
+        rootTabbedPane.setVerifyInputWhenFocusTarget(false);
 
         scenarioManagerPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1183,6 +801,393 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 
         rootTabbedPane.addTab("Professor Login Manager", professorLoginManager);
 
+        studentManagerPanel.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                studentManagerPanelPropertyChange(evt);
+            }
+        });
+        studentManagerPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        sessionListModel = new DefaultListModel();
+        classList.setModel(
+            sessionListModel
+        );
+        classList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        classList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                classListValueChanged(evt);
+            }
+        });
+        classList.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                classListFocusGained(evt);
+            }
+        });
+        classScrollPane.setViewportView(classList);
+
+        studentManagerPanel.add(classScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 55, 150, 120));
+
+        studentList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        studentList.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                studentListFocusGained(evt);
+            }
+        });
+        studentScrollPane.setViewportView(studentList);
+
+        studentManagerPanel.add(studentScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 55, 200, 120));
+
+        classScrollPaneLabel.setText("Class");
+        studentManagerPanel.add(classScrollPaneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        studentScrollPaneLabel.setText("Student");
+        studentManagerPanel.add(studentScrollPaneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
+
+        addClassButton.setText("Add Class");
+        addClassButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addClassButtonActionPerformed(evt);
+            }
+        });
+        studentManagerPanel.add(addClassButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 130, -1));
+        //KL
+
+        addStudentButton.setText("Add Student");
+        addStudentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addStudentButtonActionPerformed(evt);
+            }
+        });
+        studentManagerPanel.add(addStudentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 130, -1));
+        //KL
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        studentManagerPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 0, 8, 180));
+        studentManagerPanel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 183, 1032, 10));
+
+        removeClassButton.setText("Remove Class");
+        removeClassButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeClassButtonActionPerformed(evt);
+            }
+        });
+        studentManagerPanel.add(removeClassButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 130, -1));
+        //KL
+
+        removeStudentButton.setText("Remove Student");
+        removeStudentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeStudentButtonActionPerformed(evt);
+            }
+        });
+        studentManagerPanel.add(removeStudentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 130, -1));
+        //KL
+
+        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        studentManagerPanel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 10, 180));
+        //KL
+
+        removalAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 24));
+        removalAreaLabel.setForeground(new java.awt.Color(255, 0, 0));
+        removalAreaLabel.setText("Removal");
+        studentManagerPanel.add(removalAreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, -1, -1));
+        //KL
+
+        selectionArealabel.setFont(new java.awt.Font("Tahoma", 0, 24));
+        selectionArealabel.setText("Selection");
+        studentManagerPanel.add(selectionArealabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        addingAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 24));
+        addingAreaLabel.setText("Adding");
+        studentManagerPanel.add(addingAreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, -1));
+        //KL
+
+        studentManagerControlTabbedPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        classControlJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Student Name", "Student Username", "Average Score", "Number of Simulations Completed"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        classControlJTable.getTableHeader().setReorderingAllowed(false);
+        classControlScrollPane.setViewportView(classControlJTable);
+        //KL
+
+        averageClassScoreLabel.setText("Average Class Score:");
+
+        printAllStudentRecordsButton.setText("Print All Student Records in Selected Class");
+        printAllStudentRecordsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printAllStudentRecordsButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout classControlPanelLayout = new javax.swing.GroupLayout(classControlPanel);
+        classControlPanel.setLayout(classControlPanelLayout);
+        classControlPanelLayout.setHorizontalGroup(
+            classControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(classControlScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1025, Short.MAX_VALUE)
+            .addGroup(classControlPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(averageClassScoreLabel)
+                .addContainerGap(912, Short.MAX_VALUE))
+            .addGroup(classControlPanelLayout.createSequentialGroup()
+                .addGap(363, 363, 363)
+                .addComponent(printAllStudentRecordsButton)
+                .addContainerGap(427, Short.MAX_VALUE))
+        );
+        classControlPanelLayout.setVerticalGroup(
+            classControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(classControlPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(classControlScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(averageClassScoreLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(printAllStudentRecordsButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        //KL
+        //KL
+
+        studentManagerControlTabbedPane.addTab("Class Control", classControlPanel);
+
+        studentControlPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        studentTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Name of Completed Scenario", "DateTaken", "Suggestion", "Score"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        studentTable.getTableHeader().setReorderingAllowed(false);
+        studentControlScrollPane.setViewportView(studentTable);
+        studentTable.getColumnModel().getColumn(0).setResizable(false);
+        studentTable.getColumnModel().getColumn(1).setResizable(false);
+        studentTable.getColumnModel().getColumn(2).setResizable(false);
+        studentTable.getColumnModel().getColumn(3).setResizable(false);
+        //KL
+
+        studentControlPanel.add(studentControlScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1025, 222));
+
+        viewSelectedScenarioButton.setText("View/Print Selected Scenario Input");
+        viewSelectedScenarioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewSelectedScenarioButtonActionPerformed(evt);
+            }
+        });
+        studentControlPanel.add(viewSelectedScenarioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 200, -1));
+        //KL
+
+        studentNameLabel.setText("StudentName");
+        studentControlPanel.add(studentNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 0, -1, -1));
+
+        SimulationScoreLabel.setText("AVG Simulation Score");
+        studentControlPanel.add(SimulationScoreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
+
+        changePasswordButton.setText("Change Student Password");
+        changePasswordButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changePasswordButtonActionPerformed(evt);
+            }
+        });
+        studentControlPanel.add(changePasswordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 190, -1));
+        //KL
+
+        changeUserNameButton.setText("Change Student Username");
+        changeUserNameButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeUserNameButtonActionPerformed(evt);
+            }
+        });
+        studentControlPanel.add(changeUserNameButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 190, -1));
+        //KL
+
+        jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        studentControlPanel.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 50, 202));
+        //KL
+
+        LoginModLabel.setFont(new java.awt.Font("Tahoma", 0, 24));
+        LoginModLabel.setText("Login Modification");
+        studentControlPanel.add(LoginModLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 250, -1, -1));
+
+        currentStudentUserNameLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
+        currentStudentUserNameLabel.setText("current Username");
+        studentControlPanel.add(currentStudentUserNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, -1, -1));
+        //KL
+
+        currentStudentPasswordLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
+        currentStudentPasswordLabel.setText("current Password");
+        studentControlPanel.add(currentStudentPasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, -1, -1));
+        //KL
+
+        SimResultsAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 24));
+        SimResultsAreaLabel.setText("Simulation Results");
+        studentControlPanel.add(SimResultsAreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
+        //KL
+
+        setScenarioScoreButton.setText("Grade Scenario");
+        setScenarioScoreButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                setScenarioScoreButtonActionPerformed(evt);
+            }
+        });
+        studentControlPanel.add(setScenarioScoreButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 200, -1));
+        //KL
+
+        jLabel3.setText("Current Student Password");
+        studentControlPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, -1, -1));
+        //KL
+
+        jLabel4.setText("Current Student Username");
+        studentControlPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, -1, -1));
+        //KL
+
+        editSelectedResultSuggestionButton.setText("Edit Suggestion");
+        editSelectedResultSuggestionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editSelectedResultSuggestionButtonActionPerformed(evt);
+            }
+        });
+        studentControlPanel.add(editSelectedResultSuggestionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 200, -1));
+        //KL
+
+        deleteSelectedResultButton.setText("Delete Result");
+        deleteSelectedResultButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteSelectedResultButtonActionPerformed(evt);
+            }
+        });
+        studentControlPanel.add(deleteSelectedResultButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 200, -1));
+        //KL
+
+        printSelectedStudentRecordButton.setText("Print Current Student Record");
+        printSelectedStudentRecordButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printSelectedStudentRecordButtonActionPerformed(evt);
+            }
+        });
+        studentControlPanel.add(printSelectedStudentRecordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 200, -1));
+        //KL
+
+        jLabel12.setText("Current Student Real Name");
+        studentControlPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 290, -1, -1));
+        //KL
+
+        currentStudentRealNameLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
+        currentStudentRealNameLabel.setText("current RealName");
+        studentControlPanel.add(currentStudentRealNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 310, -1, -1));
+        //KL
+
+        changeRealNameButton.setText("Change Student Name");
+        changeRealNameButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeRealNameButtonActionPerformed(evt);
+            }
+        });
+        studentControlPanel.add(changeRealNameButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 330, 190, -1));
+        //KL
+
+        studentManagerControlTabbedPane.addTab("Student Control", studentControlPanel);
+
+        studentManagerPanel.add(studentManagerControlTabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 1030, 490));
+
+        rootTabbedPane.addTab("Student Manager", studentManagerPanel);
+
         logOutButton.setBackground(new java.awt.Color(255, 0, 0));
         logOutButton.setText("Logout");
         logOutButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1211,16 +1216,6 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void rootTabSelectionChanged(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_rootTabSelectionChanged
-        // TODO add your handling code here:
-        if(rootTabbedPane.getSelectedComponent().equals(scenarioManagerPanel)){
-            int returnVal = JOptionPane.showConfirmDialog(this,"Save changes to Scenarios?","Confirm Save",JOptionPane.YES_NO_OPTION);
-            if(returnVal == JOptionPane.YES_OPTION){
-                 saveChangesButtonActionPerformed(null);
-            }
-        }
-    }//GEN-LAST:event_rootTabSelectionChanged
 
     private void viewSelectedNarrativeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSelectedNarrativeButtonActionPerformed
         // TODO add your handling code here:
@@ -1684,6 +1679,10 @@ private void changeRealNameButtonActionPerformed(java.awt.event.ActionEvent evt)
                 }
     }
 }//GEN-LAST:event_changeRealNameButtonActionPerformed
+
+private void studentManagerPanelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_studentManagerPanelPropertyChange
+// TODO add your handling code here:
+}//GEN-LAST:event_studentManagerPanelPropertyChange
 //KL
 	private void classListValueChanged(javax.swing.event.ListSelectionEvent evt) {
 		// change students based on selected class
@@ -2233,39 +2232,73 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
                 
                
 	}
-
+        
+    //!!KL    
 	private void removeStudentButtonActionPerformed(
 			java.awt.event.ActionEvent evt) {
 
-                //!!KL
+                
 		if (studentList.getSelectedIndex() != -1) {
                     //Ketty: Added temp student object to obtain real name for use in JOptionPane window.
                     // Edited second message dialog.
-                    User student = null;
-
-                    for(User user:  controller.getStudentsInClass((String)classList.getSelectedValue())){
-                        if(!user.isInstructor()&& user.getUserName().equals(studentList.getSelectedValue())&&
-                                user.getClassName().equals(classList.getSelectedValue())){
-                            student = user;
-                            break;
-                        }
-                    }
-                   if (student != null) {
-                    if(JOptionPane.showConfirmDialog(this, "Are you sure you want to remove "+student.getRealName()+"?", null, JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION){
-                    
-                    String name = ((String)studentList.getSelectedValue());
-
-                    controller.removeStudentByNameAndClassroom(name,(String) classList.getSelectedValue());
-                    studentList.clearSelection();
-                    studentManagerControlTabbedPane.setSelectedIndex(0);
-                    classListValueChanged(null);
-                    
-                    }
-		}}
-                else
-                    JOptionPane.showMessageDialog(this, "Please select a student to remove.", "Student Removal", JOptionPane.OK_OPTION);
             
-	}
+                   Student student1 = controller.getStudentByNameAndClassroom((String)studentList.getSelectedValue(), (String)classList.getSelectedValue());
+                    
+                   if (student1 != null) {
+                       if(JOptionPane.showConfirmDialog(this, "Are you sure you want to remove "+student1.getRealName()+
+                               "?", null, JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION){
+                    
+                      if (student1.getCompletedScenarios().size() > 0) {
+                        if (JOptionPane.showConfirmDialog(this, "Would you like to print " + student1.getRealName() 
+                            + "'s student record before removal?", null, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+                            try {
+			PrinterJob job = PrinterJob.getPrinterJob();
+                        
+			PageFormat format = new PageFormat();
+			format.setOrientation(PageFormat.LANDSCAPE);
+                        Student student = controller.getStudentByNameAndClassroom(
+                                         (String)studentList.getSelectedValue(),
+                                         (String)classList.getSelectedValue());
+                        
+
+                        Printable printable = studentTable.getPrintable(JTable.PrintMode.FIT_WIDTH, 
+                                new MessageFormat(
+                                student.getRealName()+ " "+
+                                student.getClassName()+
+                                " Report as of "+new SimpleDateFormat("M-d-yy").format(Calendar.getInstance().getTime())), 
+                                
+                                new MessageFormat(
+                                "Completed Scenarios:"+student.getCompletedScenarios().size()+
+                                //!!KL
+                                " Average Score: "+ (student.getAverageScore()==null?"Not Available":student.getAverageScore()) + 
+                                " Page - {0}"));
+                                //KL
+                        
+			job.setPrintable(printable, format);
+			if (job.printDialog())
+				job.print();
+
+                            }
+		 catch (PrinterException ex) {
+			Logger.getLogger(SimulationGUI.class.getName()).log(Level.SEVERE,
+					null, ex);
+		}
+                            
+                         } 
+                       }
+                      
+                      String name = ((String)studentList.getSelectedValue());
+                      controller.removeStudentByNameAndClassroom(name,(String) classList.getSelectedValue());
+                      studentList.clearSelection();
+                      studentManagerControlTabbedPane.setSelectedIndex(0);
+                      classListValueChanged(null);
+                    }
+                  }
+                }
+                       
+                else
+                    JOptionPane.showMessageDialog(this, "Please select a student to remove.", "Student Removal", JOptionPane.OK_OPTION); 
+       }     
         //KL
         
         //!!KL
