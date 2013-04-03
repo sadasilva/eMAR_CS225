@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import CS225FinalProject.DataStructure.User;
 
 import javax.swing.JOptionPane;
 
@@ -57,9 +58,12 @@ public class LoginGUI extends javax.swing.JDialog {
         passwordField = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
         logoLabel = new javax.swing.JLabel();
+        //!!JK
+        jLabel1 = new javax.swing.JLabel();
+        //JK
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Massbay General Hospital");
+        setTitle("MassBay eMAR");
         setMinimumSize(new java.awt.Dimension(340, 240));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -93,7 +97,16 @@ public class LoginGUI extends javax.swing.JDialog {
         getContentPane().add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 90, -1));
 
         logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/massbayLogo.png"))); // NOI18N
-        getContentPane().add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 11, -1, -1));
+        //!!JK
+        getContentPane().add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 80));
+        //JK
+
+        //!!JK
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(55, 55, 70));
+        jLabel1.setText("eMAR");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 110, 50));
+        //JK
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -104,41 +117,63 @@ public class LoginGUI extends javax.swing.JDialog {
 		}
 	}
 
-	private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {
-           
-		boolean isInstructor = false;
-		boolean isStudent = false;
+    //!!JK
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        boolean isInstructor = false;
+        boolean isStudent = false;
 
-		isStudent = controller.validateStudentLogin(
-				usernameTextField.getText(),
-				new String(passwordField.getPassword()));
+        String userName = usernameTextField.getText().toLowerCase();
+        char[] password = passwordField.getPassword();
 
-		isInstructor = controller.validateInstructorLogin(
-				usernameTextField.getText(),
-				new String(passwordField.getPassword()));
+        isStudent = controller.validateStudentLogin(
+                userName,
+                new String(password));
 
-		if (isStudent && !isInstructor) {
-                    SimulationManager.CURRENT_USER = controller.getUser(usernameTextField.getText(),new String( passwordField.getPassword()));
-			SimulationManager.state = SimulationManager.SCENARIO_STATE;
-			setVisible(false);
-			usernameTextField.setText("");
-			passwordField.setText("");
-                        
+        isInstructor = controller.validateInstructorLogin(
+                userName,
+                new String(password));
 
-		} else if (isInstructor && !isStudent) {
-			SimulationManager.state = SimulationManager.MAINTENANCE_STATE;
-			setVisible(false);
-			usernameTextField.setText("");
-			passwordField.setText("");
-
-		} else {
-			JOptionPane.showMessageDialog(this, "Your login is not correct");
-		}
-                
-            
-            
-	}
-
+        if (isStudent && !isInstructor) {
+            SimulationManager.CURRENT_USER = controller.getUser(userName, new String(password));
+            SimulationManager.state = SimulationManager.SCENARIO_STATE;
+            setVisible(false);
+            usernameTextField.setText("");
+            passwordField.setText("");
+        } else if (isInstructor && !isStudent) {
+            SimulationManager.state = SimulationManager.MAINTENANCE_STATE;
+            setVisible(false);
+            usernameTextField.setText("");
+            passwordField.setText("");
+        } else {
+            User enteredUser = controller.getUser(userName, null);
+            if (enteredUser != null) {
+                String newPassword = JOptionPane.showInputDialog(this, "Enter your new password:");
+                if (newPassword != null) {
+                    if (newPassword.equals("")) {
+                        JOptionPane.showMessageDialog(this, "Error. You did not enter a password");
+                    } else {
+                        String verifyPassword = JOptionPane.showInputDialog(this, "Verify your new password:");
+                        if (verifyPassword != null) {
+                            if (verifyPassword.equals("")) {
+                                JOptionPane.showMessageDialog(this, "Error. You did not enter a password");
+                            } else {
+                                if (newPassword.equals(verifyPassword)) {
+                                    enteredUser.setPassword(newPassword);
+                                    JOptionPane.showMessageDialog(this, "Your password has been successfully set.");
+                                } else {
+                                    JOptionPane.showMessageDialog(this, "Error. The passwords you typed did not match.");
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "The user name or password you typed is incorrect.");
+            }
+        }
+    }
+    //JK
+        
 	private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {
 
 		if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -161,7 +196,7 @@ public class LoginGUI extends javax.swing.JDialog {
 					break;
 
 				}
-			}
+                        }
 		} catch (ClassNotFoundException ex) {
 			java.util.logging.Logger.getLogger(LoginGUI.class.getName()).log(
 					java.util.logging.Level.SEVERE, null, ex);
@@ -198,6 +233,7 @@ public class LoginGUI extends javax.swing.JDialog {
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel logoLabel;
     private javax.swing.JPasswordField passwordField;

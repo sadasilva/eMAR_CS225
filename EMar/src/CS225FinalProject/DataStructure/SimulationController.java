@@ -395,14 +395,27 @@ public class SimulationController implements Serializable {
 		return users;
 	}
 
-	public User getUser(String username, String password) {
-		for (User user : users) {
-			if (user.getUserName().equals(username)
-					&& user.getPassword().equals(password))
-				return user;
-		}
-		return null;
-	}
+    //!!JK
+    public User getUser(String username, String password) {
+        if (password == null) {
+            for (User user : users) {
+                if (user.getUserName().equals(username)
+                        && user.getPassword() == null) {
+                    return user;
+                }
+            }
+            return null;
+        } else {
+            for (User user : users) {
+                if (user.getUserName().equals(username)
+                        && user.getPassword().equals(password)) {
+                    return user;
+                }
+            }
+            return null;
+        }
+    }
+    //JK
 
 	public ArrayList<Scenario> getScenarios() {
 		return scenarios;
