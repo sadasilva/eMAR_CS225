@@ -125,7 +125,8 @@ public class SimulationController implements Serializable {
         
         public boolean isUserNameAvailable(String username){
             for(User user:users){
-                if(user.getUserName().equals(username))
+                //Ketty: Made method case insensitive.
+                if(user.getUserName().equalsIgnoreCase(username))
                     return false;
             }
             return true;
@@ -255,13 +256,16 @@ public class SimulationController implements Serializable {
          * @param realName
          * @return 
          */
-        public boolean removeStudentByNameAndClassroom(String realName, String classroom){
+        
+        //!!KL
+        // Ketty: Changed method to remove student by userName instead of realName.
+        public boolean removeStudentByNameAndClassroom(String userName, String classroom){
             boolean userRemoved = false;
 
 		if (!users.isEmpty()) {
 			for (User u : (ArrayList<User>) users.clone()) {
                                if(u != null && u instanceof Student){
-				if (u.getRealName().equals(realName) && u.getClassName().equals(classroom)){
+				if (u.getUserName().equals(userName) && u.getClassName().equals(classroom)){
 					users.remove(u);
 					userRemoved = true;
 				}
@@ -271,12 +275,17 @@ public class SimulationController implements Serializable {
 		return userRemoved;
             
         }
-        public Student getStudentByNameAndClassroom(String realName, String classroom){
+        // End Ketty's changes.
+        //KL
+        
+        //!!KL
+        // Ketty: Changed method to retrieve student using userName instead of realName.
+        public Student getStudentByNameAndClassroom(String userName, String classroom){
             Student user=null;
             if (!users.isEmpty()) {
 			for (User u : (ArrayList<User>) users.clone()) {
                                if(u != null && u instanceof Student){
-				if (u.getRealName().equals(realName) && u.getClassName().equals(classroom)){
+				if (u.getUserName().equals(userName) && u.getClassName().equals(classroom)){
 				
 					user = (Student)u;
                                         return user;
@@ -287,6 +296,9 @@ public class SimulationController implements Serializable {
 		return user;
             
         }
+        // End Ketty's changes.
+        //KL
+        
 	@SuppressWarnings("unchecked")
 	public void removeStudentsFromClass(String className) {
 		if (!users.isEmpty()) {
