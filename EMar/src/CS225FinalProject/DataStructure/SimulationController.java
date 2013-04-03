@@ -475,56 +475,29 @@ public class SimulationController implements Serializable {
      */
     public void addRandomizedScenario() {
         String[] s = dataIO.loadScenarioValueList();
-        int[] num = new int[20];
-        
-        
-        
+        String[] randomTopics = {"__NAMES__", "__DIAGNOSIS__", "__ALLERGIES__",
+            "__ROOM__", "__AGE__", "__MEDICATIONNAME__", "__DOSAGE__",
+            "__MEDICATIONDUETIMES__", "__ROUTEOFMEDICATION__", "__DATE__", "__TIME__",
+            "__FOLLOWUP__", "__INITALS__"};
+        int[] num = new int[randomTopics.length];
         for (int i = 0; i < s.length; i++) {
+            for (int j = 0; j < randomTopics.length; j++) {
+                if (s[i].equals(randomTopics[j])) {
+                    Random r = new Random();
+                    int s_amount;
+                    int e_amount;
+                    int tracker = i;
+                    s_amount = i + 1;
+                    while (!s[tracker].equals("end")) {
 
-            if(s[i].equals("__NAMES__")) {
-               readCore(i,s,num,0);
+                        tracker++;
+                    }
+                    e_amount = tracker;
+                    num[j] = r.nextInt(e_amount - s_amount) + s_amount;
+                }
             }
-            if(s[i].equals("__DIAGNOSIS__")) {
-               readCore(i,s,num,1);
-            }
-            if(s[i].equals("__ALLERGIES__")) {
-               readCore(i,s,num,2);
-            }
-            if(s[i].equals("__ROOM__")) {
-               readCore(i,s,num,3);
-            }
-            if(s[i].equals("__AGE__")) {
-               readCore(i,s,num,4);
-            }
-            if(s[i].equals("__MEDICATIONNAME__")) {
-               readCore(i,s,num,5);
-            }
-            if(s[i].equals("__DOSAGE__")) {
-               readCore(i,s,num,6);
-            }
-            if(s[i].equals("__MEDICATIONDUETIMES__")) {
-               readCore(i,s,num,7);
-            }
-            if(s[i].equals("__ROUTEOFMEDICATION__")) {
-               readCore(i,s,num,8);
-            }
-            if(s[i].equals("__DATE__")) {
-               readCore(i,s,num,9);
-            }
-            if(s[i].equals("__TIME__")) {
-               readCore(i,s,num,10);
-            }
-            if(s[i].equals("__FOLLOWUP__")) {
-               readCore(i,s,num,11);
-            }
-            if(s[i].equals("__INITALS__")) {
-               readCore(i,s,num,12);
-            }
-            
-            
-            
-            
         }
+
         Narrative nar = new Narrative(s[num[9]], s[num[10]], 
                 "\nTemperature:\nPulse:\nResp:\nBP:\nO2 Sat:\nPain Scale:\nFSBS:\nSite:\nRelated Diagnosis/Reason for medication:\n", 
                 s[num[11]], s[num[12]]);
@@ -544,23 +517,6 @@ public class SimulationController implements Serializable {
         this.writeScenarios();
         
 
-    }
-    
-    /**
-     * Used for less code use in addRandomizedScenario()
-    */
-    private void readCore(int i, String s[], int num[],int ranum) {
-        Random r = new Random();
-        int s_amount;
-        int e_amount;
-        int j = i;
-        s_amount = i + 1;
-        while (!s[j].equals("end")) {
-
-            j++;
-        }
-        e_amount = j;
-        num[ranum] = r.nextInt(e_amount - s_amount) + s_amount;
     }
         
 }
