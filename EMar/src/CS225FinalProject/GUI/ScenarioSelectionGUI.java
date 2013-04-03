@@ -21,6 +21,7 @@ public class ScenarioSelectionGUI extends javax.swing.JFrame {
     private SimulationController controller = SimulationController
             .getInstance();
     private int scenarioIterator = 0;
+    private ArrayList<Scenario> scenarios;
 
     /**
      * this verifies that it loads the selected scenario properly.
@@ -32,7 +33,7 @@ public class ScenarioSelectionGUI extends javax.swing.JFrame {
             if (controller.getScenarios().size() > 0) {
                 setSelectedScenarioInfo();
             } else {
-                JOptionPane.showMessageDialog(this, "This program does not have any Scenarios to select. Please contact your professor", null, JOptionPane.OK_OPTION);
+                JOptionPane.showMessageDialog(this, "This program does not have any scenarios to select. Please contact your professor", null, JOptionPane.OK_OPTION);
                 SimulationManager.state = SimulationManager.LOGIN_STATE;
             }
         }
@@ -104,7 +105,7 @@ public class ScenarioSelectionGUI extends javax.swing.JFrame {
         getContentPane().add(previosButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 217, -1, -1));
 
         titleLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        titleLabel.setText("Select Scenenario");
+        titleLabel.setText("Scenario Selection");
         getContentPane().add(titleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 11, -1, -1));
 
         scenarioDescriptionPanel.setBackground(new java.awt.Color(200, 200, 200));
@@ -158,7 +159,7 @@ public class ScenarioSelectionGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void setSelectedScenarioInfo() {
-        ArrayList<Scenario> scenarios = controller.getScenarios();
+        scenarios = controller.getScenarios();
         patientNameSetter.setText(scenarios.get(scenarioIterator)
                 .getPatientName());
 
@@ -177,7 +178,7 @@ public class ScenarioSelectionGUI extends javax.swing.JFrame {
 
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {
         if (JOptionPane.showConfirmDialog(this,
-                "Are You Sure You want to Log out?", null,
+                "Are you sure you want to log out?", null,
                 JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
             // System.exit(0);
             controller.writeClassNames();
@@ -188,10 +189,21 @@ public class ScenarioSelectionGUI extends javax.swing.JFrame {
         }
     }
 
+    //SS: Start Hitting the start button shows the time you have to complete the scenario
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        String timeRemaining;
+        
+        if (scenarios.get(scenarioIterator).getTime()== 0) {
+                    timeRemaining = "No time limit to complete scenario.";
+        }
+        else{
+            timeRemaining = "You have " + scenarios.get(scenarioIterator).getTime() + " minutes\n to complete this scenario.";
+        }
+        JOptionPane.showMessageDialog(this, timeRemaining, "Time Warning", JOptionPane.OK_OPTION);
 
         SimulationManager.state = SimulationManager.SIMULATION_STATE;
     }
+    //SS: End Hitting the start button shows the time you have to complete the scenario
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:

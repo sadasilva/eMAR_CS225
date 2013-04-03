@@ -282,9 +282,6 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
     private void initComponents() {
 
         rootTabbedPane = new javax.swing.JTabbedPane();
-        jcaho_Panel = new javax.swing.JPanel();
-        jcahoScrollPane = new javax.swing.JScrollPane();
-        jcahoLabel = new javax.swing.JLabel();
         mar_Panel = new javax.swing.JPanel();
         roomNumberText = new javax.swing.JLabel();
         roomNumSetter = new javax.swing.JLabel();
@@ -308,7 +305,9 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
         viewSelectedNarrativeButton = new javax.swing.JButton();
         deleteNarrativeButton = new javax.swing.JButton();
         editNarrativeButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jcaho_Panel = new javax.swing.JPanel();
+        jcahoScrollPane = new javax.swing.JScrollPane();
+        jcahoLabel = new javax.swing.JLabel();
         cancelSimulationButton = new javax.swing.JButton();
         timeLeftTextLabel = new javax.swing.JLabel();
         timeLabel = new javax.swing.JLabel();
@@ -331,27 +330,6 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
                 rootTabbedPanePropertyChange(evt);
             }
         });
-
-        jcahoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/JAHCO.png"))); // NOI18N
-        jcahoScrollPane.setViewportView(jcahoLabel);
-
-        javax.swing.GroupLayout jcaho_PanelLayout = new javax.swing.GroupLayout(jcaho_Panel);
-        jcaho_Panel.setLayout(jcaho_PanelLayout);
-        jcaho_PanelLayout.setHorizontalGroup(
-            jcaho_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jcaho_PanelLayout.createSequentialGroup()
-                .addGap(333, 333, 333)
-                .addComponent(jcahoScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(230, Short.MAX_VALUE))
-        );
-        jcaho_PanelLayout.setVerticalGroup(
-            jcaho_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jcaho_PanelLayout.createSequentialGroup()
-                .addComponent(jcahoScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
-        );
-
-        rootTabbedPane.addTab("JCAHO", jcaho_Panel);
 
         mar_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -446,7 +424,7 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, true, false, true, true
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -470,13 +448,15 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
 
         documentationPane.add(docTabelHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 985, 370));
 
-        insertNewNarrativeButton.setText("Insert a New Narrative");
+        insertNewNarrativeButton.setActionCommand("Add Narrative");
+        insertNewNarrativeButton.setLabel("Add Narrative");
         insertNewNarrativeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 insertNewNarrativeButtonActionPerformed(evt);
             }
         });
         documentationPane.add(insertNewNarrativeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
+        insertNewNarrativeButton.getAccessibleContext().setAccessibleName("Add Narrative");
 
         viewSelectedNarrativeButton.setText("View Selected Narrative");
         viewSelectedNarrativeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -502,25 +482,42 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
         });
         documentationPane.add(editNarrativeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, -1, -1));
 
-        jLabel1.setText("Note: After adding a new narrative, you may edit the narrative's follow up, initials, date, and time columms by double clicking its corresponding area.");
-        documentationPane.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, -1));
-
         documentationScrollPane.setViewportView(documentationPane);
 
         javax.swing.GroupLayout documentation_PanelLayout = new javax.swing.GroupLayout(documentation_Panel);
         documentation_Panel.setLayout(documentation_PanelLayout);
         documentation_PanelLayout.setHorizontalGroup(
             documentation_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(documentationScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1019, Short.MAX_VALUE)
+            .addComponent(documentationScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1034, Short.MAX_VALUE)
         );
         documentation_PanelLayout.setVerticalGroup(
             documentation_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(documentation_PanelLayout.createSequentialGroup()
-                .addComponent(documentationScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                .addComponent(documentationScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         rootTabbedPane.addTab("Documentation", documentation_Panel);
+
+        jcahoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/jcaho.png")));
+        jcahoScrollPane.setViewportView(jcahoLabel);
+
+        javax.swing.GroupLayout jcaho_PanelLayout = new javax.swing.GroupLayout(jcaho_Panel);
+        jcaho_Panel.setLayout(jcaho_PanelLayout);
+        jcaho_PanelLayout.setHorizontalGroup(
+            jcaho_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jcaho_PanelLayout.createSequentialGroup()
+                .addComponent(jcahoScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1012, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 22, Short.MAX_VALUE))
+        );
+        jcaho_PanelLayout.setVerticalGroup(
+            jcaho_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jcaho_PanelLayout.createSequentialGroup()
+                .addComponent(jcahoScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
+        );
+
+        rootTabbedPane.addTab("JCAHO", jcaho_Panel);
 
         getContentPane().add(rootTabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -582,16 +579,21 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
 
     }
 
+    //SS Start: confirm narrative deletion
     private void deleteNarrativeButtonActionPerformed(Object evt) {
         if (documentationTable.getSelectedRow() < SimulationManager.CURRENT_SCENARIO.getStartNumOfNarratives() && documentationTable.getSelectedRow() > -1) {
             JOptionPane.showMessageDialog(this, "You can not delete this narrative\n it was made by another nurse");
-        } else if (documentationTable.getSelectedRow() > -1) {
+        }else if (documentationTable.getSelectedRow() < 0) {
+                JOptionPane.showMessageDialog(this, "Please Select a Narrative");
+        }else if (documentationTable.getSelectedRow() > -1) {
+            if (JOptionPane.showConfirmDialog(this,
+                "Are you sure you want to delete this narrative?", null,
+                JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
             ((DefaultTableModel) documentationTable.getModel()).removeRow(documentationTable.getSelectedRow());
-        } else if (documentationTable.getSelectedRow() < 0) {
-            JOptionPane.showMessageDialog(this, "Please Select a Narrative");
+            }
         }
-
     }
+    //SS End: confirm narrative deletion
 
     private void hourDueButtonActionPerformed(Object evt) {
 
@@ -682,7 +684,10 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
         controller.writeUsers();
         controller.populateUsers();
         setVisible(false);
-        SimulationManager.state = SimulationManager.LOGIN_STATE;
+        
+        //SS: Start submit button returns to scenario list instead of logging out
+        SimulationManager.state = SimulationManager.SCENARIO_STATE;
+        //SS: End submit button returns to scenario list instead of logging out
 
     }
 
@@ -1367,7 +1372,6 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
     private javax.swing.JButton giveMedicationButton;
     private javax.swing.JButton hourDueButton;
     private javax.swing.JButton insertNewNarrativeButton;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jcahoLabel;
     private javax.swing.JScrollPane jcahoScrollPane;
