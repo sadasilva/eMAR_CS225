@@ -77,17 +77,17 @@ public class SimulationManager {
 				mainGUI.setVisible(false);
 
 				if (!loginDialog.isVisible()) {
-					JOptionPane.showMessageDialog(loginDialog,
-							"Welcome to Massbay General Hospital\n"
-									+ "                   Please log in\n");
+					//JOptionPane.showMessageDialog(loginDialog,
+					//		"Welcome to Massbay General Hospital\n"
+					//				+ "                   Please log in\n");
 					loginDialog.setVisible(true);
 				}
 
 			} else if (SimulationManager.state == LOGIN_STATE) {
 				if (!loginDialog.isVisible()) {
-					JOptionPane.showMessageDialog(loginDialog,
-							"Welcome to Massbay General Hospital\n"
-									+ "                   Please log in");
+					//JOptionPane.showMessageDialog(loginDialog,
+					//		"Welcome to Massbay General Hospital\n"
+					//				+ "                   Please log in");
 					loginDialog.setVisible(true);
 				}
 				mainGUI.setVisible(false);
