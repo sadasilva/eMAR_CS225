@@ -957,6 +957,11 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
             }
         });
         classControlJTable.getTableHeader().setReorderingAllowed(false);
+        classControlJTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                classControlJTableMouseClicked(evt);
+            }
+        });
         classControlScrollPane.setViewportView(classControlJTable);
         //KL
 
@@ -1683,6 +1688,10 @@ private void changeRealNameButtonActionPerformed(java.awt.event.ActionEvent evt)
 private void studentManagerPanelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_studentManagerPanelPropertyChange
 // TODO add your handling code here:
 }//GEN-LAST:event_studentManagerPanelPropertyChange
+
+private void classControlJTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classControlJTableMouseClicked
+// TODO add your handling code here:
+}//GEN-LAST:event_classControlJTableMouseClicked
 //KL
 	private void classListValueChanged(javax.swing.event.ListSelectionEvent evt) {
 		// change students based on selected class
@@ -2234,6 +2243,7 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
 	}
         
     //!!KL    
+        
 	private void removeStudentButtonActionPerformed(
 			java.awt.event.ActionEvent evt) {
 
@@ -2336,6 +2346,8 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
                 }
 	}
 
+        //!!KL
+        // Added option of printing class's student records before deleting class.
 	private void removeClassButtonActionPerformed(ActionEvent evt) {
 
             if(classList.getSelectedIndex()>-1){
@@ -2346,6 +2358,47 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
 		if (n == JOptionPane.YES_OPTION) {
 			if (controller.removeClass((String) classList.getSelectedValue())
 					&& classList.getSelectedIndex() > -1) {
+                            
+                            if (JOptionPane.showConfirmDialog(this, "Would you like to print this class's student records before removal?",
+                                    null, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                                try {
+			PrinterJob job = PrinterJob.getPrinterJob();
+                        int index = classList.getSelectedIndex();
+                        
+                        if (job.printDialog()){
+                            PageFormat format = new PageFormat();
+                                format.setOrientation(PageFormat.LANDSCAPE);
+                            for(int i =0; i<studentList.getModel().getSize();i++){
+                                studentList.setSelectedIndex(i);
+                                
+                                Student student = controller.getStudentByNameAndClassroom(
+                                (String)studentList.getSelectedValue(),
+                                (String)classList.getSelectedValue());
+
+                                Printable printable = studentTable.getPrintable(JTable.PrintMode.FIT_WIDTH, 
+                                        new MessageFormat(
+                                        student.getRealName()+ " "+
+                                        student.getClassName()+
+                                        " Report as of "+new SimpleDateFormat("M-d-yy").format(Calendar.getInstance().getTime())), 
+
+                                        new MessageFormat(
+                                        "Completed Scenarios:"+student.getCompletedScenarios().size()+
+                                        //!!KL
+                                        " Average Score: "+ (student.getAverageScore()==null?"Not Available":student.getAverageScore()) + 
+                                        " Page - {0}"));
+                                        //KL
+                                        job.setPrintable(printable, format);
+                                        job.print();
+                            }
+                        }
+                        studentList.clearSelection();
+                        classControlJTable.clearSelection();
+                        classList.setSelectedIndex(index);
+		} catch (PrinterException ex) {
+			Logger.getLogger(SimulationGUI.class.getName()).log(Level.SEVERE,
+					null, ex);
+		}
+                            }
 				sessionListModel.remove(classList.getSelectedIndex());
                                 for(User u:controller.getUsers()){
                                     if(!u.isInstructor())
@@ -2354,14 +2407,8 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
                                 }
                                 controller.writeUsers();
 				controller.writeClassNames();
-			} else {
-       //!!KL
-       // Ketty: Both messages tweaked.
-				System.out.println("Class not removed!");
-				// class removal unsuccessful -try again!
-                                
-			}
-		}
+
+		}}
             }
             else
                 JOptionPane.showMessageDialog(this, "Please select a class to remove.", null, JOptionPane.OK_OPTION);
