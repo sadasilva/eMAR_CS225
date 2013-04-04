@@ -262,8 +262,9 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 	}
 
 	private void loadStudentsByClass() {
-		studentListModel = new DefaultListModel();
+            studentListModel = new DefaultListModel();
 		studentList.setModel(studentListModel);
+                ArrayList<User> unsortedList = new ArrayList<User>();
 
 		for (User u : controller.getUsers()) {
 
@@ -273,10 +274,24 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 							.equalsIgnoreCase(u.getClassName())) {
                             //!!KL
                             //Ketty: Changed getRealName() to getUserName()
-				studentListModel.addElement((String) u.getUserName());
+                            //!!JK : sorted the list
+                                unsortedList.add(u);
+                                
+				//studentListModel.addElement((String) u.getUserName());
                             //KL
 			}
 		}
+                Collections.sort(unsortedList,
+                                new Comparator<User>() {
+                                    public int compare(User user1, User user2) {
+                                        return user1.getUserName().compareToIgnoreCase(user2.getUserName());
+                                    }
+                                });
+
+                for (User userName : unsortedList){
+                    studentListModel.addElement(userName.getUserName());
+                }
+                //JK
 	}
 
 	/**
@@ -1682,10 +1697,14 @@ private void changeRealNameButtonActionPerformed(java.awt.event.ActionEvent evt)
                     if(student!=null){
                     
                     String newRealName = JOptionPane.showInputDialog("Enter a new name:");
-                    if(newRealName!= null && newRealName.matches(realNamePattern)){
-                        if(!newRealName.equals("")) {
+                    if(newRealName!= null){
+                        if(!newRealName.equals("") && newRealName.matches(realNamePattern)) {
                         student.setRealName(newRealName);
                         }
+                        //!!KL
+                        else if (!newRealName.equals("") && !newRealName.matches(realNamePattern))
+                        showMessageDialog(this, "The Real Name field only allows letters, spaces and dashes.", "Error", OK_OPTION);
+                        //KL
                         else{
                             showMessageDialog(this,"Please enter an appropriate name.",null, OK_OPTION);
                         }
@@ -1694,10 +1713,7 @@ private void changeRealNameButtonActionPerformed(java.awt.event.ActionEvent evt)
                         studentManagerControlTabbedPane.setSelectedIndex(0);
                         studentManagerControlTabbedPane.setSelectedIndex(1);
                         
-                    }
-                    else
-                        showMessageDialog(this, "The Real Name field only allows letters, spaces and dashes.", "Error", OK_OPTION);
-                        
+                    }                 
                 }
     }
 }//GEN-LAST:event_changeRealNameButtonActionPerformed
@@ -2315,10 +2331,13 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
 			java.awt.event.ActionEvent evt) {
 
                 
-		if (studentList.getSelectedIndex() != -1) {
+		//if (studentList.getSelectedIndex() != -1) {
+            if (classControlJTable.getSelectedRow() != -1){
                     //Ketty: Added temp student object to obtain real name for use in JOptionPane window.
                     // Edited second message dialog.
-            
+                   studentList.setSelectedIndex(classControlJTable.getSelectedRow());
+                   
+                    
                    Student student1 = controller.getStudentByNameAndClassroom((String)studentList.getSelectedValue(), (String)classList.getSelectedValue());
                     
                    if (student1 != null) {
@@ -2518,27 +2537,33 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
                     // Also added "newUsername.matches..." in following if statement.
                     String newUsername = JOptionPane.showInputDialog("Enter a new username:");
                    
-                    if(newUsername!= null && newUsername.matches(userNamePattern)){
+                    //!!KL
+                    if(newUsername!= null){
                         if(controller.isUserNameAvailable(newUsername)){
                         
                         
-                        if(!newUsername.equals(""))
-                        student.setUserName(newUsername);
+                        if(!newUsername.equals("") && newUsername.matches(userNamePattern))
+                            student.setUserName(newUsername);
+                        
+                        else if (!newUsername.equals("") && !newUsername.matches(userNamePattern))
+                        showMessageDialog(this, "The Username field only allows letters, numbers, periods and underscores.", "Error", OK_OPTION);
                         else{
                             showMessageDialog(this,"Please enter an appropriate username.",null, OK_OPTION);
                         }
-                        
                         controller.writeUsers();
-                        studentManagerControlTabbedPane.setSelectedIndex(0);
-                        studentManagerControlTabbedPane.setSelectedIndex(1);
+                        int sIndex = studentList.getSelectedIndex();
+                        int cIndex = classList.getSelectedIndex();
+                        classList.clearSelection();
+                        classList.setSelectedIndex(cIndex);
+                        studentList.setSelectedIndex(sIndex);
+                        
                         }
                         else
                             showMessageDialog(this,"Sorry, this username is already in use.",null,OK_OPTION);
                     }
-                    //!!KL
-                    else if (!newUsername.matches(userNamePattern))
-                        showMessageDialog(this, "The Username field only allows letters, numbers, periods and underscores.", "Error", OK_OPTION);
-                        //KL
+                    
+
+                    //KL
                     }
                 }
             

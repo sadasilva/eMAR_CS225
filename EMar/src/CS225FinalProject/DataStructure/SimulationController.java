@@ -1,6 +1,7 @@
 package CS225FinalProject.DataStructure;
 
 import java.io.Serializable;
+import java.util.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -367,7 +368,7 @@ public class SimulationController implements Serializable {
 	// returns a list of students that belong to a specific class
 	public ArrayList<User> getStudentsInClass(String className) {
 
-		ArrayList<User> tempUsers = new ArrayList<User>();
+				ArrayList<User> tempUsers = new ArrayList<User>();
 
 		if (!users.isEmpty()) {
 			for (User student : users) {
@@ -378,7 +379,15 @@ public class SimulationController implements Serializable {
                             }
 			}
 		}
-		return tempUsers;
+                //!!JK : alphabetized the list
+		Collections.sort(tempUsers,
+                                new Comparator<User>() {
+                                    public int compare(User user1, User user2) {
+                                        return user1.getRealName().compareToIgnoreCase(user2.getRealName());
+                                    }
+                                });
+                return tempUsers;
+                //JK
 	}
 
 	public boolean isInstructorAvailable() {
