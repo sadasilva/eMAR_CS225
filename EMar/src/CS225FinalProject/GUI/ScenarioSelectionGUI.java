@@ -8,13 +8,14 @@ import CS225FinalProject.DataStructure.Scenario;
 import CS225FinalProject.SimulationManager;
 import CS225FinalProject.DataStructure.SimulationController;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 import javax.swing.JOptionPane;
 
 /**
  * Student practice version
  *
- * @author Eric
+ * @author Eric.
  */
 public class ScenarioSelectionGUI extends javax.swing.JFrame {
 
@@ -51,7 +52,7 @@ public class ScenarioSelectionGUI extends javax.swing.JFrame {
         setLocation((getToolkit().getScreenSize().width - getWidth()) / 2,
                 (getToolkit().getScreenSize().height - getHeight()) / 2);
 
-        setAlwaysOnTop(true);
+        //setAlwaysOnTop(true); SS: disable stay on top
         //setSelectedScenarioInfo();
 
 
@@ -68,8 +69,7 @@ public class ScenarioSelectionGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        nextButton = new javax.swing.JButton();
-        previosButton = new javax.swing.JButton();
+        jToolBar1 = new javax.swing.JToolBar();
         titleLabel = new javax.swing.JLabel();
         scenarioDescriptionScrollPanel = new javax.swing.JScrollPane();
         scenarioDescriptionPanel = new javax.swing.JPanel();
@@ -80,83 +80,122 @@ public class ScenarioSelectionGUI extends javax.swing.JFrame {
         timeSetter = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         summarySetterV2 = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList();
+        scenarioSummaryLabel1 = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
         logOutButton = new javax.swing.JButton();
+        logoLabel = new javax.swing.JLabel();
+
+        jToolBar1.setRollover(true);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Scenario Selection");
+        setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        nextButton.setText("Next");
-        nextButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(nextButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(629, 211, -1, -1));
-
-        previosButton.setText("Previous");
-        previosButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                previosButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(previosButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 217, -1, -1));
-
-        titleLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        titleLabel.setFont(new java.awt.Font("Candara", 1, 26)); // NOI18N
+        titleLabel.setForeground(new java.awt.Color(255, 255, 255));
         titleLabel.setText("Scenario Selection");
-        getContentPane().add(titleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 11, -1, -1));
+        getContentPane().add(titleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, -1, -1));
 
         scenarioDescriptionPanel.setBackground(new java.awt.Color(200, 200, 200));
         scenarioDescriptionPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        patientNameLabel.setFont(new java.awt.Font("Candara", 1, 16)); // NOI18N
         patientNameLabel.setText("Patient Name:");
-        scenarioDescriptionPanel.add(patientNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        scenarioDescriptionPanel.add(patientNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
 
+        patientNameSetter.setFont(new java.awt.Font("Candara", 0, 15)); // NOI18N
         patientNameSetter.setText("name");
-        scenarioDescriptionPanel.add(patientNameSetter, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, -1, -1));
+        scenarioDescriptionPanel.add(patientNameSetter, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
 
-        scenarioSummaryLabel.setText("Scenario Summary:");
-        scenarioDescriptionPanel.add(scenarioSummaryLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
+        scenarioSummaryLabel.setFont(new java.awt.Font("Candara", 1, 16)); // NOI18N
+        scenarioSummaryLabel.setText("Scenarios:");
+        scenarioDescriptionPanel.add(scenarioSummaryLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
+        currentTimeLabel.setFont(new java.awt.Font("Candara", 1, 16)); // NOI18N
         currentTimeLabel.setText("Time Limit:");
-        scenarioDescriptionPanel.add(currentTimeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
+        scenarioDescriptionPanel.add(currentTimeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, -1, -1));
 
+        timeSetter.setFont(new java.awt.Font("Candara", 0, 15)); // NOI18N
         timeSetter.setText("5:00PM");
-        scenarioDescriptionPanel.add(timeSetter, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+        scenarioDescriptionPanel.add(timeSetter, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, -1));
 
         summarySetterV2.setColumns(20);
         summarySetterV2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         summarySetterV2.setRows(5);
         jScrollPane1.setViewportView(summarySetterV2);
 
-        scenarioDescriptionPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 510, 255));
+        scenarioDescriptionPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 570, 290));
+
+        DefaultListModel model = new DefaultListModel();
+        for(Scenario s : controller.getScenarios()) {
+            model.addElement(s.getPatientName());
+        }
+        jList1.setModel(model
+        );
+        jList1.setPreferredSize(new java.awt.Dimension(30, 80));
+        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jList1ValueChanged(evt);
+            }
+        });
+        jList1.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                jList1selectionChangedListener(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jList1);
+
+        scenarioDescriptionPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 140, 290));
+
+        scenarioSummaryLabel1.setFont(new java.awt.Font("Candara", 1, 16)); // NOI18N
+        scenarioSummaryLabel1.setText("Scenario Summary:");
+        scenarioDescriptionPanel.add(scenarioSummaryLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
 
         scenarioDescriptionScrollPanel.setViewportView(scenarioDescriptionPanel);
 
-        getContentPane().add(scenarioDescriptionScrollPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 61, 518, -1));
+        getContentPane().add(scenarioDescriptionScrollPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 750, 380));
 
-        startButton.setBackground(new java.awt.Color(0, 204, 0));
+        startButton.setBackground(new java.awt.Color(255, 204, 51));
         startButton.setText("Start");
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, -1, -1));
+        getContentPane().add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 530, -1, -1));
 
-        logOutButton.setBackground(new java.awt.Color(255, 0, 0));
+        logOutButton.setBackground(new java.awt.Color(255, 204, 51));
         logOutButton.setText("Logout");
         logOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logOutButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(logOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 456, -1, -1));
+        getContentPane().add(logOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 530, -1, -1));
+
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/massbay.png"))); // NOI18N
+        getContentPane().add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
+        // TODO add your handling code here:
+        scenarioIterator = jList1.getLeadSelectionIndex();
+        setSelectedScenarioInfo();
+    }//GEN-LAST:event_jList1ValueChanged
+
+    private void jList1selectionChangedListener(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jList1selectionChangedListener
+        // TODO add your handling code here:
+        scenarioIterator = jList1.getLeadSelectionIndex();
+        setSelectedScenarioInfo();
+    }//GEN-LAST:event_jList1selectionChangedListener
 
     private void setSelectedScenarioInfo() {
         scenarios = controller.getScenarios();
@@ -178,7 +217,7 @@ public class ScenarioSelectionGUI extends javax.swing.JFrame {
 
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {
         if (JOptionPane.showConfirmDialog(this,
-                "Are you sure you want to log out?", null,
+                "Are you sure you want to logout?", null,
                 JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
             // System.exit(0);
             controller.writeClassNames();
@@ -280,15 +319,18 @@ public class ScenarioSelectionGUI extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel currentTimeLabel;
+    private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JButton logOutButton;
-    private javax.swing.JButton nextButton;
+    private javax.swing.JLabel logoLabel;
     private javax.swing.JLabel patientNameLabel;
     private javax.swing.JLabel patientNameSetter;
-    private javax.swing.JButton previosButton;
     private javax.swing.JPanel scenarioDescriptionPanel;
     private javax.swing.JScrollPane scenarioDescriptionScrollPanel;
     private javax.swing.JLabel scenarioSummaryLabel;
+    private javax.swing.JLabel scenarioSummaryLabel1;
     private javax.swing.JButton startButton;
     private javax.swing.JTextArea summarySetterV2;
     private javax.swing.JLabel timeSetter;
