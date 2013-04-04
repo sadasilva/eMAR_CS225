@@ -158,7 +158,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         });
                 
                 studentManagerControlTabbedPane.addChangeListener(new ChangeListener() {
-
+ 
             @Override
             public void stateChanged(ChangeEvent e) {
                 if(studentManagerControlTabbedPane.getSelectedIndex()==1 && studentList.getSelectedIndex()>-1){
@@ -1075,7 +1075,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 viewSelectedScenarioButtonActionPerformed(evt);
             }
         });
-        studentControlPanel.add(viewSelectedScenarioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 200, -1));
+        studentControlPanel.add(viewSelectedScenarioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 210, -1));
         //KL
 
         studentNameLabel.setText("StudentName");
@@ -1131,7 +1131,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 setScenarioScoreButtonActionPerformed(evt);
             }
         });
-        studentControlPanel.add(setScenarioScoreButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 200, -1));
+        studentControlPanel.add(setScenarioScoreButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 210, -1));
         //KL
 
         jLabel3.setText("Current Student Password");
@@ -1148,7 +1148,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 editSelectedResultSuggestionButtonActionPerformed(evt);
             }
         });
-        studentControlPanel.add(editSelectedResultSuggestionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 200, -1));
+        studentControlPanel.add(editSelectedResultSuggestionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 210, -1));
         //KL
 
         deleteSelectedResultButton.setText("Delete Result");
@@ -1157,7 +1157,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 deleteSelectedResultButtonActionPerformed(evt);
             }
         });
-        studentControlPanel.add(deleteSelectedResultButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 200, -1));
+        studentControlPanel.add(deleteSelectedResultButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 210, -1));
         //KL
 
         printSelectedStudentRecordButton.setText("Print Current Student Record");
@@ -1166,7 +1166,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 printSelectedStudentRecordButtonActionPerformed(evt);
             }
         });
-        studentControlPanel.add(printSelectedStudentRecordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 200, -1));
+        studentControlPanel.add(printSelectedStudentRecordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 210, -1));
         //KL
 
         jLabel12.setText("Current Student Real Name");
@@ -1689,10 +1689,17 @@ private void studentManagerPanelPropertyChange(java.beans.PropertyChangeEvent ev
 // TODO add your handling code here:
 }//GEN-LAST:event_studentManagerPanelPropertyChange
 
+//!!KL
 private void classControlJTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classControlJTableMouseClicked
 // TODO add your handling code here:
+    if (evt.getClickCount() == 2) {
+        System.out.println("Yes, you doubleclicked me.");
+        studentList.setSelectedIndex(classControlJTable.getSelectedRow());
+        studentManagerControlTabbedPane.setSelectedIndex(1);
+    }
 }//GEN-LAST:event_classControlJTableMouseClicked
 //KL
+
 	private void classListValueChanged(javax.swing.event.ListSelectionEvent evt) {
 		// change students based on selected class
 		loadStudentsByClass();
@@ -1708,7 +1715,7 @@ private void classControlJTableMouseClicked(java.awt.event.MouseEvent evt) {//GE
                        //Added username column to table.
                        user.getUserName(),
                        //KL
-                      (((Student)user).getAverageScore() != null ? ((Student)user).getAverageScore():"not available"),
+                      (((Student)user).getAverageScore() != null ? ((Student)user).getAverageScore():"Not Available"),
                        new Integer( ((Student)user).getCompletedScenarios().size())});
                    if(((Student)user).getAverageScore()!=null){
                       if(sumAVG==null)
