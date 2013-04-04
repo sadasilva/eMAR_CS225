@@ -659,7 +659,6 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
     private void submit() {
         String suggestion = "";//maybe extra stuff here
         int narrativePointer = 0;
-        narrativePointer = 0;
         narrativePointer += SimulationManager.CURRENT_SCENARIO.getStartNumOfNarratives();
         ArrayList<Narrative> narratives = new ArrayList<Narrative>();
         if (!(SimulationManager.CURRENT_SCENARIO.getStartNumOfNarratives() == documentationTable.getRowCount())) {
@@ -687,6 +686,7 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
         
         theScenario = new CompletedScenario(narratives, giveMedBeforeDoc + (!suggestion.equals("") ? "Potential JCAHO errors found:\n" + suggestion : "No Potential JCAHO errors found."),
                 SimulationManager.CURRENT_SCENARIO);
+        
         ((Student) SimulationManager.CURRENT_USER).
                 addCompletedScenario(theScenario);
 
@@ -1039,10 +1039,19 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
             giveMedicationConfirmButton.setText("Give Medication");
             giveMedicationConfirmButton
                     .addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(
-                        java.awt.event.ActionEvent evt) {
-                    giveMedicationConfirmButtonActionPerformed(evt);
+                //JK Start medication validation
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    if (amountTextField.getText().equals("") ||
+                        unitsTextField.getText().equals("") ||
+                        followUpTextField.getText().equals("") ||
+                        initialsTextField.getText().equals("")) {
+                            JOptionPane.showMessageDialog(new JDialog(), "Error. Please fill in all fields.");
+                    }
+                    else{
+                        giveMedicationConfirmButtonActionPerformed(evt);
+                    }
                 }
+                //JK End medication validation
             });
 
             amountTextField.addKeyListener(new java.awt.event.KeyAdapter() {
