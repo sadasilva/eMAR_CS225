@@ -1693,7 +1693,7 @@ private void studentManagerPanelPropertyChange(java.beans.PropertyChangeEvent ev
 private void classControlJTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classControlJTableMouseClicked
 // TODO add your handling code here:
     if (evt.getClickCount() == 2) {
-        System.out.println("Yes, you doubleclicked me.");
+        System.out.println("Yes, you doubleclicked me."); //Test
         studentList.setSelectedIndex(classControlJTable.getSelectedRow());
         studentManagerControlTabbedPane.setSelectedIndex(1);
     }
@@ -2475,9 +2475,10 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
                         else
                             showMessageDialog(this,"Sorry, this username is already in use.",null,OK_OPTION);
                     }
-                    else
+                    //!!KL
+                    else if (!newUsername.matches(userNamePattern))
                         showMessageDialog(this, "The Username field only allows letters, numbers, periods and underscores.", "Error", OK_OPTION);
-                        
+                        //KL
                     }
                 }
             
