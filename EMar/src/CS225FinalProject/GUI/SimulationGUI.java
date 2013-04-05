@@ -298,30 +298,31 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
         diagnosisSetterV2 = new javax.swing.JTextPane();
         diagnosisText1 = new javax.swing.JLabel();
         submitButton = new javax.swing.JButton();
-        documentation_Panel = new javax.swing.JPanel();
-        documentationScrollPane = new javax.swing.JScrollPane();
-        documentationPane = new javax.swing.JPanel();
-        docTabelHolder = new javax.swing.JScrollPane();
-        documentationTable = new javax.swing.JTable();
         insertNewNarrativeButton = new javax.swing.JButton();
         viewSelectedNarrativeButton = new javax.swing.JButton();
-        deleteNarrativeButton = new javax.swing.JButton();
         editNarrativeButton = new javax.swing.JButton();
-        timeLabel = new javax.swing.JLabel();
+        deleteNarrativeButton = new javax.swing.JButton();
         timeLeftTextLabel = new javax.swing.JLabel();
+        timeLabel = new javax.swing.JLabel();
+        medicalHistoryLabel = new javax.swing.JLabel();
+        printSampleButton = new javax.swing.JButton();
+        cancelSimulationButton = new javax.swing.JButton();
+        docTabelHolder = new javax.swing.JScrollPane();
+        documentationTable = new javax.swing.JTable();
         jcaho_Panel = new javax.swing.JPanel();
         jcahoScrollPane = new javax.swing.JScrollPane();
         jcahoLabel = new javax.swing.JLabel();
-        cancelSimulationButton = new javax.swing.JButton();
-        printSampleButton = new javax.swing.JButton();
+        logoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Medical Administration Records");
         setBackground(new java.awt.Color(0, 0, 0));
+        setPreferredSize(new java.awt.Dimension(1000, 700));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        rootTabbedPane.setMinimumSize(new java.awt.Dimension(900, 596));
+        rootTabbedPane.setMinimumSize(new java.awt.Dimension(1000, 700));
+        rootTabbedPane.setPreferredSize(new java.awt.Dimension(1000, 700));
         rootTabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 rootTabbedPaneStateChanged(evt);
@@ -333,32 +334,37 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
             }
         });
 
+        mar_Panel.setMinimumSize(new java.awt.Dimension(1000, 509));
+        mar_Panel.setPreferredSize(new java.awt.Dimension(1000, 700));
         mar_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        roomNumberText.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        roomNumberText.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         roomNumberText.setText("Room:");
-        mar_Panel.add(roomNumberText, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, -1, -1));
+        mar_Panel.add(roomNumberText, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 0, -1, -1));
 
+        roomNumSetter.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         roomNumSetter.setText("number");
-        mar_Panel.add(roomNumSetter, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, -1, -1));
+        mar_Panel.add(roomNumSetter, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 0, -1, -1));
 
-        patientNameText.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        patientNameText.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         patientNameText.setText("Name:");
-        mar_Panel.add(patientNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        mar_Panel.add(patientNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
+        patientNameLabel.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         patientNameLabel.setText("patientName");
-        mar_Panel.add(patientNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, -1));
+        mar_Panel.add(patientNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, -1, -1));
 
-        diagnosisText.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        diagnosisText.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         diagnosisText.setText("Administer Medication:");
-        mar_Panel.add(diagnosisText, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
+        mar_Panel.add(diagnosisText, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, -1, -1));
 
-        allergiesText.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        allergiesText.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         allergiesText.setText("Allergies:");
-        mar_Panel.add(allergiesText, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, -1, -1));
+        mar_Panel.add(allergiesText, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 30, -1, -1));
 
+        allergiesSetter.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         allergiesSetter.setText("jLabel10");
-        mar_Panel.add(allergiesSetter, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, -1, -1));
+        mar_Panel.add(allergiesSetter, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 30, -1, -1));
 
         marTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -390,45 +396,113 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
         marTable.getTableHeader().setReorderingAllowed(false);
         marScrollPane.setViewportView(marTable);
 
-        mar_Panel.add(marScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 980, 160));
+        mar_Panel.add(marScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 480, 170));
 
         giveMedicationButton.setText("Give Medication");
+        giveMedicationButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
         giveMedicationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 giveMedicationButtonActionPerformed(evt);
             }
         });
-        mar_Panel.add(giveMedicationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 440, -1, -1));
+        mar_Panel.add(giveMedicationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(845, 220, -1, -1));
 
-        hourDueButton.setText("View Hour Due Details");
+        hourDueButton.setText("View Details");
         hourDueButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hourDueButtonActionPerformed(evt);
             }
         });
-        mar_Panel.add(hourDueButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 440, -1, -1));
+        mar_Panel.add(hourDueButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 220, -1, -1));
 
         diagnosisSetterV2.setEditable(false);
+        diagnosisSetterV2.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
         jScrollPane1.setViewportView(diagnosisSetterV2);
 
-        mar_Panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 980, 140));
+        mar_Panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 440, 170));
 
-        diagnosisText1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        diagnosisText1.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         diagnosisText1.setText("Diagnosis:");
-        mar_Panel.add(diagnosisText1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        mar_Panel.add(diagnosisText1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
-        submitButton.setBackground(new java.awt.Color(0, 204, 0));
+        submitButton.setBackground(new java.awt.Color(255, 204, 51));
         submitButton.setText("Submit");
+        submitButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
         submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitButtonActionPerformed(evt);
             }
         });
-        mar_Panel.add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 490, -1, -1));
+        mar_Panel.add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 505, -1, -1));
 
-        rootTabbedPane.addTab("MAR", mar_Panel);
+        insertNewNarrativeButton.setActionCommand("Add Narrative");
+        insertNewNarrativeButton.setLabel("Add Narrative");
+        insertNewNarrativeButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        insertNewNarrativeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertNewNarrativeButtonActionPerformed(evt);
+            }
+        });
+        mar_Panel.add(insertNewNarrativeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 440, -1, -1));
 
-        documentationPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        viewSelectedNarrativeButton.setText("View Selected Narrative");
+        viewSelectedNarrativeButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        viewSelectedNarrativeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewSelectedNarrativeButtonActionPerformed(evt);
+            }
+        });
+        mar_Panel.add(viewSelectedNarrativeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 440, -1, -1));
+
+        editNarrativeButton.setText("Edit Selected Narrative");
+        editNarrativeButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        editNarrativeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editNarrativeButtonActionPerformed(evt);
+            }
+        });
+        mar_Panel.add(editNarrativeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 440, -1, -1));
+
+        deleteNarrativeButton.setText("Delete Selected Narrative");
+        deleteNarrativeButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        deleteNarrativeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteNarrativeButtonActionPerformed(evt);
+            }
+        });
+        mar_Panel.add(deleteNarrativeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(614, 440, -1, -1));
+
+        timeLeftTextLabel.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        timeLeftTextLabel.setText("Time Left:");
+        mar_Panel.add(timeLeftTextLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, -1, 23));
+
+        timeLabel.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        timeLabel.setText("15:00");
+        mar_Panel.add(timeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 505, -1, 30));
+
+        medicalHistoryLabel.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        medicalHistoryLabel.setText("Medical History:");
+        mar_Panel.add(medicalHistoryLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
+
+        printSampleButton.setBackground(new java.awt.Color(255, 204, 51));
+        printSampleButton.setText("Print");
+        printSampleButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        printSampleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printSampleButtonActionPerformed(evt);
+            }
+        });
+        mar_Panel.add(printSampleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(767, 505, -1, -1));
+
+        cancelSimulationButton.setBackground(new java.awt.Color(255, 204, 51));
+        cancelSimulationButton.setText("Cancel");
+        cancelSimulationButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        cancelSimulationButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelSimulationButtonActionPerformed(evt);
+            }
+        });
+        mar_Panel.add(cancelSimulationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 505, -1, -1));
 
         documentationTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -451,74 +525,19 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
         documentationTable.getTableHeader().setReorderingAllowed(false);
         docTabelHolder.setViewportView(documentationTable);
         documentationTable.getColumnModel().getColumn(0).setResizable(false);
-        documentationTable.getColumnModel().getColumn(0).setPreferredWidth(60);
+        documentationTable.getColumnModel().getColumn(0).setPreferredWidth(80);
         documentationTable.getColumnModel().getColumn(1).setResizable(false);
-        documentationTable.getColumnModel().getColumn(1).setPreferredWidth(90);
+        documentationTable.getColumnModel().getColumn(1).setPreferredWidth(80);
         documentationTable.getColumnModel().getColumn(2).setResizable(false);
-        documentationTable.getColumnModel().getColumn(2).setPreferredWidth(695);
+        documentationTable.getColumnModel().getColumn(2).setPreferredWidth(634);
         documentationTable.getColumnModel().getColumn(3).setResizable(false);
         documentationTable.getColumnModel().getColumn(3).setPreferredWidth(80);
         documentationTable.getColumnModel().getColumn(4).setResizable(false);
-        documentationTable.getColumnModel().getColumn(4).setPreferredWidth(50);
+        documentationTable.getColumnModel().getColumn(4).setPreferredWidth(80);
 
-        documentationPane.add(docTabelHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 985, 370));
+        mar_Panel.add(docTabelHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 960, 160));
 
-        insertNewNarrativeButton.setActionCommand("Add Narrative");
-        insertNewNarrativeButton.setLabel("Add Narrative");
-        insertNewNarrativeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                insertNewNarrativeButtonActionPerformed(evt);
-            }
-        });
-        documentationPane.add(insertNewNarrativeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
-
-        viewSelectedNarrativeButton.setText("View Selected Narrative");
-        viewSelectedNarrativeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewSelectedNarrativeButtonActionPerformed(evt);
-            }
-        });
-        documentationPane.add(viewSelectedNarrativeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, -1));
-
-        deleteNarrativeButton.setText("Delete Selected Narrative");
-        deleteNarrativeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteNarrativeButtonActionPerformed(evt);
-            }
-        });
-        documentationPane.add(deleteNarrativeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, -1, -1));
-
-        editNarrativeButton.setText("Edit Selected Narrative");
-        editNarrativeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editNarrativeButtonActionPerformed(evt);
-            }
-        });
-        documentationPane.add(editNarrativeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, -1, -1));
-
-        timeLabel.setText("15:00");
-        documentationPane.add(timeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, -1, 30));
-
-        timeLeftTextLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        timeLeftTextLabel.setText("Time Left:");
-        documentationPane.add(timeLeftTextLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, -1, 23));
-
-        documentationScrollPane.setViewportView(documentationPane);
-
-        javax.swing.GroupLayout documentation_PanelLayout = new javax.swing.GroupLayout(documentation_Panel);
-        documentation_Panel.setLayout(documentation_PanelLayout);
-        documentation_PanelLayout.setHorizontalGroup(
-            documentation_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(documentationScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1034, Short.MAX_VALUE)
-        );
-        documentation_PanelLayout.setVerticalGroup(
-            documentation_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(documentation_PanelLayout.createSequentialGroup()
-                .addComponent(documentationScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        rootTabbedPane.addTab("Documentation", documentation_Panel);
+        rootTabbedPane.addTab("Medical Administration Records", mar_Panel);
 
         jcahoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/jcaho.png")));
         jcahoScrollPane.setViewportView(jcahoLabel);
@@ -529,35 +548,21 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
             jcaho_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jcaho_PanelLayout.createSequentialGroup()
                 .addComponent(jcahoScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1012, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jcaho_PanelLayout.setVerticalGroup(
             jcaho_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jcaho_PanelLayout.createSequentialGroup()
                 .addComponent(jcahoScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 2, Short.MAX_VALUE))
         );
 
-        rootTabbedPane.addTab("Guidelines", jcaho_Panel);
+        rootTabbedPane.addTab("JCAHO Guidelines", jcaho_Panel);
 
-        getContentPane().add(rootTabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 580));
+        getContentPane().add(rootTabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, 600));
 
-        cancelSimulationButton.setBackground(new java.awt.Color(204, 0, 0));
-        cancelSimulationButton.setText("Cancel");
-        cancelSimulationButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelSimulationButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cancelSimulationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 610, -1, -1));
-
-        printSampleButton.setText("Print");
-        printSampleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                printSampleButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(printSampleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 610, -1, -1));
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/massbaywide.png"))); // NOI18N
+        getContentPane().add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -576,34 +581,282 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
         }
     }//GEN-LAST:event_rootTabbedPaneStateChanged
 
-    private void cancelSimulationButtonActionPerformed(ActionEvent evt) {
-        if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(this,
-                "Are you sure you want to cancel the simulation and select another problem?", null, JOptionPane.YES_NO_OPTION)) {
-            SimulationManager.state = SimulationManager.SCENARIO_STATE;
-        }
-
-    }
-
-    //SS Start: confirm narrative deletion
-    private void deleteNarrativeButtonActionPerformed(Object evt) {
+    private void deleteNarrativeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteNarrativeButtonActionPerformed
+        //SS Start: confirm narrative deletion
         if (documentationTable.getSelectedRow() < SimulationManager.CURRENT_SCENARIO.getStartNumOfNarratives() && documentationTable.getSelectedRow() > -1) {
             JOptionPane.showMessageDialog(this, "You can not delete this narrative\n it was made by another nurse");
         }else if (documentationTable.getSelectedRow() < 0) {
-                JOptionPane.showMessageDialog(this, "Please Select a Narrative");
+            JOptionPane.showMessageDialog(this, "Please Select a Narrative");
         }else if (documentationTable.getSelectedRow() > -1) {
             if (JOptionPane.showConfirmDialog(this,
                 "Are you sure you want to delete this narrative?", null,
                 JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
             ((DefaultTableModel) documentationTable.getModel()).removeRow(documentationTable.getSelectedRow());
+        }
+        }
+        //SS End: confirm narrative deletion
+    }//GEN-LAST:event_deleteNarrativeButtonActionPerformed
+
+    private void editNarrativeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editNarrativeButtonActionPerformed
+
+        //JR
+        
+                if (documentationTable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(this, "Please Select a Narrative");
+        } else if (documentationTable.getSelectedRow() < SimulationManager.CURRENT_SCENARIO.getStartNumOfNarratives() && documentationTable.getSelectedRow() > -1) {
+            JOptionPane.showMessageDialog(this, "You cannot edit this narrative\n it was made by another nurse.");
+        } else {
+            
+            
+            Narrative n = controller.getScenarioByName(patientNameLabel.getText()).getNarrativeList().get(documentationTable.getSelectedRow());
+            NarrativeDialog dialog = new NarrativeDialog(this,true,(DefaultTableModel)documentationTable.getModel(),n, documentationTable.getSelectedRow());
+            dialog.setVisible(true);
+            if(dialog.update())
+            {
+                n = dialog.createNarrative();
+                controller.writeScenarios();
             }
         }
-    }
-    //SS End: confirm narrative deletion
+                //JR
+        
+        
+        
+//        if (documentationTable.getSelectedRow() < 0) {
+//            JOptionPane.showMessageDialog(this, "Please Select a Narrative");
+//        } else if (documentationTable.getSelectedRow() < SimulationManager.CURRENT_SCENARIO.getStartNumOfNarratives() && documentationTable.getSelectedRow() > -1) {
+//            JOptionPane.showMessageDialog(this, "You cannot edit this narrative\n it was made by another nurse");
+//        } else {
+//            final JDialog t = new JDialog(this, true);
+//
+//            t.setLayout(new GridLayout(1, 2));
+//
+//            t.setSize(800, 300);
+//            t.setLocation(
+//                (t.getToolkit().getScreenSize().width - t.getWidth()) / 2,
+//                (t.getToolkit().getScreenSize().height - t.getHeight()) / 2);
+//
+//            t.setTitle(patientNameLabel.getText()
+//                + ": "
+//                + (String) documentationTable.getValueAt(
+//                    documentationTable.getSelectedRow(), 0)
+//                + " at "
+//                + (String) documentationTable.getValueAt(
+//                    documentationTable.getSelectedRow(), 1));
+//
+//            JTextPane t2 = new JTextPane();
+//            t2.setSize(350, 300);
+//
+//            final JTextPane t3 = t2;
+//
+//            JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+//            // t2.setEditable(false);
+//            JScrollPane pane = new JScrollPane();
+//            pane.setViewportView(t2);
+//            t2.setText((String) documentationTable.getValueAt(
+//                documentationTable.getSelectedRow(), 2));
+//
+//        t.add(pane);
+//
+//        JButton saveButton = new JButton("Save");
+//        saveButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                documentationTable.setValueAt((Object) t3.getText(),
+//                    documentationTable.getSelectedRow(), 2);
+//                t.dispose();
+//            }
+//        });
+//        panel.add(saveButton);
+//        JButton cancelButton = new JButton("Cancel");
+//        cancelButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                t.dispose();
+//            }
+//        });
+//        panel.add(cancelButton);
+//
+//        t.add(panel);
+//
+//        t.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+//        //-------------------------------------------------
+//        //Debug the error for
+//
+//        Runnable runnable = new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                while (true) {
+//                    if (SimulationGUI.START_TIME != 0 && time == 0 && t.isVisible()) {
+//                        //                                documentationTable.setValueAt((Object) t3.getText(),
+//                            //							documentationTable.getSelectedRow(), 2);
+//                        t.dispose();
+//                        break;
+//                    }
+//                    try {
+//                        Thread.sleep(500);
+//                    } catch (Exception e) {
+//                        System.out.println("Timed exit");
+//                        return;
+//
+//                    }
+//                }
+//            }
+//        };
+//
+//        final Thread thread = new Thread(runnable, "CHECKER!!!");
+//
+//        thread.start();
+//
+//        //------------------------------------------------
+//        t.setVisible(true);
+//
+//        //                       Thread thread2 = new Thread(new Runnable() {
+//            //
+//            //                @Override
+//            //                public void run() {
+//                //                    try{
+//                    //                    while(true){
+//                        //                        if(!thread.isAlive()){
+//                            //                            thread.interrupt();
+//                            //                            break;
+//                            //                        }
+//                        //                        Thread.sleep(1000);
+//                        //
+//                        //                    }
+//                    //                    }
+//                //                    catch(Exception e){
+//                    //
+//                    //                    }
+//                //                }
+//            //            });
+//    //                       thread2.start();
+//
+//    }
+    }//GEN-LAST:event_editNarrativeButtonActionPerformed
 
-    private void hourDueButtonActionPerformed(Object evt) {
+    private void viewSelectedNarrativeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSelectedNarrativeButtonActionPerformed
+
+//JR
+        if (documentationTable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(this, "Please Select a Narrative");
+        } else {
+            
+            Narrative n = controller.getScenarioByName(patientNameLabel.getText()).getNarrativeList().get(documentationTable.getSelectedRow());
+                        NarrativeDialog dialog = new NarrativeDialog(this,true,n);
+                        dialog.setVisible(true);
+                        
+        }
+//JR
+        
+//        if (documentationTable.getSelectedRow() < 0) {
+//            JOptionPane.showMessageDialog(this, "Please Select a Narrative");
+//        } else {
+//            final JDialog t = new JDialog(this, true);
+//            t.setSize(400, 300);
+//            t.setLocation(
+//                (t.getToolkit().getScreenSize().width - t.getWidth()) / 2,
+//                (t.getToolkit().getScreenSize().height - t.getHeight()) / 2);
+//
+//            t.setTitle(patientNameLabel.getText()
+//                + ": "
+//                + (String) documentationTable.getValueAt(
+//                    documentationTable.getSelectedRow(), 0)
+//                + " at "
+//                + (String) documentationTable.getValueAt(
+//                    documentationTable.getSelectedRow(), 1));
+//
+//            JTextPane t2 = new JTextPane();
+//            t2.setEditable(false);
+//            JScrollPane pane = new JScrollPane();
+//            pane.setViewportView(t2);
+//            t2.setText((String) documentationTable.getValueAt(
+//                documentationTable.getSelectedRow(), 2));
+//        t.add(pane);
+//        //-------------------------------------------------
+//        //Debug the error for
+//
+//        Runnable runnable = new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                while (true) {
+//                    if (SimulationGUI.START_TIME != 0 && time == 0) {
+//                        //                                documentationTable.setValueAt((Object) t3.getText(),
+//                            //							documentationTable.getSelectedRow(), 2);
+//                        t.dispose();
+//                        break;
+//                    }
+//                    try {
+//                        Thread.sleep(500);
+//                    } catch (Exception e) {
+//                        return;
+//
+//                    }
+//                }
+//            }
+//        };
+//
+//        final Thread thread = new Thread(runnable, "CHECKER!!!");
+//
+//        thread.start();
+//
+//        //------------------------------------------------
+//
+//        t.setVisible(true);
+//        t.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+//        }
+    }//GEN-LAST:event_viewSelectedNarrativeButtonActionPerformed
+
+    private void insertNewNarrativeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertNewNarrativeButtonActionPerformed
+//        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy");
+//        DateFormat dayFormat = new SimpleDateFormat("HH:mma");
+//        ((DefaultTableModel) documentationTable.getModel())
+//        .addRow(new String[]{
+//            dateFormat.format(Calendar.getInstance(
+//                TimeZone.getDefault()).getTime()),
+//        dayFormat.format(Calendar.getInstance(
+//            TimeZone.getDefault()).getTime()),
+//    "Notes:\n\n\n\n\nTemperature:\nPulse:\nResp:\nBP:\nO2 Sat:\nPain Scale:\nFSBS:\nSite:\nRelated Diagnosis/Reason for medication:\n"});
+//    documentationTable.setRowSelectionInterval(
+//        documentationTable.getRowCount() - 1,
+//        documentationTable.getRowCount() - 1);
+//        editNarrativeButtonActionPerformed(null);
+        
+        //JR
+        NarrativeDialog dialog = new NarrativeDialog(this,true,(DefaultTableModel)documentationTable.getModel());
+         dialog.setVisible(true);
+                if(dialog.update())
+                {
+                    controller.getScenarioByName(patientNameLabel.getText()).addNarrative(dialog.createNarrative());
+                    controller.writeScenarios();
+                }
+                //JR
+                
+    }//GEN-LAST:event_insertNewNarrativeButtonActionPerformed
+
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+
+        if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(this, "Are you sure you want to submit?", "Submit", JOptionPane.YES_NO_OPTION)) {
+            
+            //SS: Start display evaluation results inquiry dialog
+            if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(this, "Would you like to view the \nevaluator's suggestions?", "Evaluator's Suggestions", JOptionPane.YES_NO_OPTION)){
+                submit();
+                JOptionPane.showMessageDialog(this, theScenario.getEvaluationSuggestion(), "Evaluator's Suggestions", JOptionPane.OK_OPTION);
+                exitToScenarioSelection();
+            }
+            else {
+                submit();
+                exitToScenarioSelection();
+            }
+            //SS: End display evaluation results inquiry dialog
+        }
+    }//GEN-LAST:event_submitButtonActionPerformed
+
+    private void hourDueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hourDueButtonActionPerformed
 
         if (marTable.getSelectedRow() < 0) {
-            JOptionPane.showMessageDialog(this, "Please Select a Medication");
+            JOptionPane.showMessageDialog(this, "Please select a medication.");
         } else {
             JDialog t = new JDialog(this, true);
             t.setSize(400, 300);
@@ -632,25 +885,119 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
             t.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         }
 
-    }
+    }//GEN-LAST:event_hourDueButtonActionPerformed
 
-    private void insertNewNarrativeButtonActionPerformed(
-            java.awt.event.ActionEvent evt) {
+    private void giveMedicationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_giveMedicationButtonActionPerformed
 
-        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy");
-        DateFormat dayFormat = new SimpleDateFormat("HH:mma");
-        ((DefaultTableModel) documentationTable.getModel())
-                .addRow(new String[]{
-            dateFormat.format(Calendar.getInstance(
-            TimeZone.getDefault()).getTime()),
-            dayFormat.format(Calendar.getInstance(
-            TimeZone.getDefault()).getTime()),
-            "Notes:\n\n\n\n\nTemperature:\nPulse:\nResp:\nBP:\nO2 Sat:\nPain Scale:\nFSBS:\nSite:\nRelated Diagnosis/Reason for medication:\n"});
-        documentationTable.setRowSelectionInterval(
-                documentationTable.getRowCount() - 1,
-                documentationTable.getRowCount() - 1);
-        editNarrativeButtonActionPerformed(null);
-    }
+
+        if (marTable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(this,
+                    "Select a medication to give.");
+        } else {
+            MedicationDialog dialog = new MedicationDialog(this, true,
+                    documentationTable.getModel());
+        }
+    
+    }//GEN-LAST:event_giveMedicationButtonActionPerformed
+
+    private void printSampleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printSampleButtonActionPerformed
+
+        try {
+
+            setAlwaysOnTop(false);
+
+            PrinterJob job = PrinterJob.getPrinterJob();
+
+            PageFormat format = new PageFormat();
+            format.setOrientation(PageFormat.LANDSCAPE);
+
+            job.setPrintable(this, format);
+            if (job.printDialog()) {
+                job.print();
+            }
+            setAlwaysOnTop(true);
+        } catch (PrinterException ex) {
+            Logger.getLogger(SimulationGUI.class.getName()).log(Level.SEVERE,
+                    null, ex);
+        }
+    
+    }//GEN-LAST:event_printSampleButtonActionPerformed
+
+    private void cancelSimulationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelSimulationButtonActionPerformed
+                if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(this,
+                "Are you sure you want to cancel the \nsimulation and select another problem?", "Cancel", JOptionPane.YES_NO_OPTION)) {
+            SimulationManager.state = SimulationManager.SCENARIO_STATE;
+        }
+    }//GEN-LAST:event_cancelSimulationButtonActionPerformed
+
+
+//    //SS Start: confirm narrative deletion
+//    private void deleteNarrativeButtonActionPerformed(Object evt) {
+//        if (documentationTable.getSelectedRow() < SimulationManager.CURRENT_SCENARIO.getStartNumOfNarratives() && documentationTable.getSelectedRow() > -1) {
+//            JOptionPane.showMessageDialog(this, "You can not delete this narrative\n it was made by another nurse");
+//        }else if (documentationTable.getSelectedRow() < 0) {
+//                JOptionPane.showMessageDialog(this, "Please Select a Narrative");
+//        }else if (documentationTable.getSelectedRow() > -1) {
+//            if (JOptionPane.showConfirmDialog(this,
+//                "Are you sure you want to delete this narrative?", null,
+//                JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+//            ((DefaultTableModel) documentationTable.getModel()).removeRow(documentationTable.getSelectedRow());
+//            }
+//        }
+//    }
+//    //SS End: confirm narrative deletion
+
+//    private void hourDueButtonActionPerformed(Object evt) {
+//
+//        if (marTable.getSelectedRow() < 0) {
+//            JOptionPane.showMessageDialog(this, "Please Select a Medication");
+//        } else {
+//            JDialog t = new JDialog(this, true);
+//            t.setSize(400, 300);
+//            t.setLocation(
+//                    (t.getToolkit().getScreenSize().width - t.getWidth()) / 2,
+//                    (t.getToolkit().getScreenSize().height - t.getHeight()) / 2);
+//
+////			t.setTitle(patientNameLabel.getText()
+////					+ ": "
+////					+ (String) documentationTable.getValueAt(
+////							documentationTable.getSelectedRow(), 0)
+////					+ " at "
+////					+ (String) documentationTable.getValueAt(
+////							documentationTable.getSelectedRow(), 1));
+//
+//
+//            JTextPane t2 = new JTextPane();
+//            t2.setEditable(false);
+//            JScrollPane pane = new JScrollPane();
+//            pane.setViewportView(t2);
+//            t2.setText((String) marTable.getValueAt(
+//                    marTable.getSelectedRow(), 3));
+//            t.add(pane);
+//
+//            t.setVisible(true);
+//            t.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+//        }
+//
+//    }
+
+//    private void insertNewNarrativeButtonActionPerformed(
+//            java.awt.event.ActionEvent evt) {
+//
+//        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy");
+//        DateFormat dayFormat = new SimpleDateFormat("HH:mma");
+//        ((DefaultTableModel) documentationTable.getModel())
+//                .addRow(new String[]{
+//            dateFormat.format(Calendar.getInstance(
+//            TimeZone.getDefault()).getTime()),
+//            dayFormat.format(Calendar.getInstance(
+//            TimeZone.getDefault()).getTime()),
+//            "Notes:\n\n\n\n\nTemperature:\nPulse:\nResp:\nBP:\nO2 Sat:\nPain Scale:\nFSBS:\nSite:\nRelated Diagnosis/Reason for medication:\n"});
+//        documentationTable.setRowSelectionInterval(
+//                documentationTable.getRowCount() - 1,
+//                documentationTable.getRowCount() - 1);
+//        editNarrativeButtonActionPerformed(null);
+//    }
     private boolean didGiveMedAfterDoc = false;
     private boolean isGaveMed = false;
     private boolean medBdoc = false;
@@ -704,104 +1051,79 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
     }
     //SS: End 
 
-    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(this, "Are you sure you want to submit?", "Confirm Submission", JOptionPane.YES_NO_OPTION)) {
-            
-            //SS: Start display evaluation results inquiry dialog
-            if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(this, "Would you like to view the \nevaluator's suggestions?", "Evaluator's Suggestions", JOptionPane.YES_NO_OPTION)){
-                submit();
-                JOptionPane.showMessageDialog(this, theScenario.getEvaluationSuggestion(), "Evaluator's Suggestions", JOptionPane.OK_OPTION);
-                exitToScenarioSelection();
-            }
-            else {
-                submit();
-                exitToScenarioSelection();
-            }
-            //SS: End display evaluation results inquiry dialog
-        }
-    }
+   
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         setVisible(false);
         SimulationManager.state = SimulationManager.LOGIN_STATE;
     }
 
-    private void viewSelectedNarrativeButtonActionPerformed(
-            java.awt.event.ActionEvent evt) {
+//    private void viewSelectedNarrativeButtonActionPerformed(
+//            java.awt.event.ActionEvent evt) {
+//
+//        if (documentationTable.getSelectedRow() < 0) {
+//            JOptionPane.showMessageDialog(this, "Please Select a Narrative");
+//        } else {
+//            final JDialog t = new JDialog(this, true);
+//            t.setSize(400, 300);
+//            t.setLocation(
+//                    (t.getToolkit().getScreenSize().width - t.getWidth()) / 2,
+//                    (t.getToolkit().getScreenSize().height - t.getHeight()) / 2);
+//
+//            t.setTitle(patientNameLabel.getText()
+//                    + ": "
+//                    + (String) documentationTable.getValueAt(
+//                    documentationTable.getSelectedRow(), 0)
+//                    + " at "
+//                    + (String) documentationTable.getValueAt(
+//                    documentationTable.getSelectedRow(), 1));
+//
+//
+//            JTextPane t2 = new JTextPane();
+//            t2.setEditable(false);
+//            JScrollPane pane = new JScrollPane();
+//            pane.setViewportView(t2);
+//            t2.setText((String) documentationTable.getValueAt(
+//                    documentationTable.getSelectedRow(), 2));
+//            t.add(pane);
+////-------------------------------------------------
+//            //Debug the error for 
+//
+//
+//            Runnable runnable = new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                    while (true) {
+//                        if (SimulationGUI.START_TIME != 0 && time == 0) {
+////                                documentationTable.setValueAt((Object) t3.getText(),
+////							documentationTable.getSelectedRow(), 2);
+//                            t.dispose();
+//                            break;
+//                        }
+//                        try {
+//                            Thread.sleep(500);
+//                        } catch (Exception e) {
+//                            return;
+//
+//                        }
+//                    }
+//                }
+//            };
+//
+//            final Thread thread = new Thread(runnable, "CHECKER!!!");
+//
+//            thread.start();
+//
+//            //------------------------------------------------
+//
+//
+//            t.setVisible(true);
+//            t.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+//        }
+//    }
 
-        if (documentationTable.getSelectedRow() < 0) {
-            JOptionPane.showMessageDialog(this, "Please Select a Narrative");
-        } else {
-            final JDialog t = new JDialog(this, true);
-            t.setSize(400, 300);
-            t.setLocation(
-                    (t.getToolkit().getScreenSize().width - t.getWidth()) / 2,
-                    (t.getToolkit().getScreenSize().height - t.getHeight()) / 2);
-
-            t.setTitle(patientNameLabel.getText()
-                    + ": "
-                    + (String) documentationTable.getValueAt(
-                    documentationTable.getSelectedRow(), 0)
-                    + " at "
-                    + (String) documentationTable.getValueAt(
-                    documentationTable.getSelectedRow(), 1));
-
-
-            JTextPane t2 = new JTextPane();
-            t2.setEditable(false);
-            JScrollPane pane = new JScrollPane();
-            pane.setViewportView(t2);
-            t2.setText((String) documentationTable.getValueAt(
-                    documentationTable.getSelectedRow(), 2));
-            t.add(pane);
-//-------------------------------------------------
-            //Debug the error for 
-
-
-            Runnable runnable = new Runnable() {
-                @Override
-                public void run() {
-
-                    while (true) {
-                        if (SimulationGUI.START_TIME != 0 && time == 0) {
-//                                documentationTable.setValueAt((Object) t3.getText(),
-//							documentationTable.getSelectedRow(), 2);
-                            t.dispose();
-                            break;
-                        }
-                        try {
-                            Thread.sleep(500);
-                        } catch (Exception e) {
-                            return;
-
-                        }
-                    }
-                }
-            };
-
-            final Thread thread = new Thread(runnable, "CHECKER!!!");
-
-            thread.start();
-
-            //------------------------------------------------
-
-
-            t.setVisible(true);
-            t.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        }
-    }
-
-    private void giveMedicationButtonActionPerformed(
-            java.awt.event.ActionEvent evt) {
-
-        if (marTable.getSelectedRow() < 0) {
-            JOptionPane.showMessageDialog(this,
-                    "Select a Medication before giving");
-        } else {
-            MedicationDialog dialog = new MedicationDialog(this, true,
-                    documentationTable.getModel());
-        }
-    }
+    
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
 
@@ -813,154 +1135,135 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
     }
     private Thread thread;
 
-    private void editNarrativeButtonActionPerformed(
-            java.awt.event.ActionEvent evt) {
-
-        if (documentationTable.getSelectedRow() < 0) {
-            JOptionPane.showMessageDialog(this, "Please Select a Narrative");
-        } else if (documentationTable.getSelectedRow() < SimulationManager.CURRENT_SCENARIO.getStartNumOfNarratives() && documentationTable.getSelectedRow() > -1) {
-            JOptionPane.showMessageDialog(this, "You cannot edit this narrative\n it was made by another nurse");
-        } else {
-            final JDialog t = new JDialog(this, true);
-
-
-
-
-            t.setLayout(new GridLayout(1, 2));
-
-            t.setSize(800, 300);
-            t.setLocation(
-                    (t.getToolkit().getScreenSize().width - t.getWidth()) / 2,
-                    (t.getToolkit().getScreenSize().height - t.getHeight()) / 2);
-
-
-
-            t.setTitle(patientNameLabel.getText()
-                    + ": "
-                    + (String) documentationTable.getValueAt(
-                    documentationTable.getSelectedRow(), 0)
-                    + " at "
-                    + (String) documentationTable.getValueAt(
-                    documentationTable.getSelectedRow(), 1));
-
-            JTextPane t2 = new JTextPane();
-            t2.setSize(350, 300);
-
-            final JTextPane t3 = t2;
-
-            JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            // t2.setEditable(false);
-            JScrollPane pane = new JScrollPane();
-            pane.setViewportView(t2);
-            t2.setText((String) documentationTable.getValueAt(
-                    documentationTable.getSelectedRow(), 2));
-
-            t.add(pane);
-
-            JButton saveButton = new JButton("Save");
-            saveButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    documentationTable.setValueAt((Object) t3.getText(),
-                            documentationTable.getSelectedRow(), 2);
-                    t.dispose();
-                }
-            });
-            panel.add(saveButton);
-            JButton cancelButton = new JButton("Cancel");
-            cancelButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    t.dispose();
-                }
-            });
-            panel.add(cancelButton);
-
-            t.add(panel);
-
-            t.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-            //-------------------------------------------------
-            //Debug the error for 
-
-
-            Runnable runnable = new Runnable() {
-                @Override
-                public void run() {
-
-                    while (true) {
-                        if (SimulationGUI.START_TIME != 0 && time == 0 && t.isVisible()) {
-//                                documentationTable.setValueAt((Object) t3.getText(),
-//							documentationTable.getSelectedRow(), 2);
-                            t.dispose();
-                            break;
-                        }
-                        try {
-                            Thread.sleep(500);
-                        } catch (Exception e) {
-                            System.out.println("Timed exit");
-                            return;
-
-                        }
-                    }
-                }
-            };
-
-            final Thread thread = new Thread(runnable, "CHECKER!!!");
-
-            thread.start();
-
-            //------------------------------------------------
-            t.setVisible(true);
-
-
-
-
-//                       Thread thread2 = new Thread(new Runnable() {
+//    private void editNarrativeButtonActionPerformed(
+//            java.awt.event.ActionEvent evt) {
 //
+//        if (documentationTable.getSelectedRow() < 0) {
+//            JOptionPane.showMessageDialog(this, "Please Select a Narrative");
+//        } else if (documentationTable.getSelectedRow() < SimulationManager.CURRENT_SCENARIO.getStartNumOfNarratives() && documentationTable.getSelectedRow() > -1) {
+//            JOptionPane.showMessageDialog(this, "You cannot edit this narrative\n it was made by another nurse");
+//        } else {
+//            final JDialog t = new JDialog(this, true);
+//
+//
+//
+//
+//            t.setLayout(new GridLayout(1, 2));
+//
+//            t.setSize(800, 300);
+//            t.setLocation(
+//                    (t.getToolkit().getScreenSize().width - t.getWidth()) / 2,
+//                    (t.getToolkit().getScreenSize().height - t.getHeight()) / 2);
+//
+//
+//
+//            t.setTitle(patientNameLabel.getText()
+//                    + ": "
+//                    + (String) documentationTable.getValueAt(
+//                    documentationTable.getSelectedRow(), 0)
+//                    + " at "
+//                    + (String) documentationTable.getValueAt(
+//                    documentationTable.getSelectedRow(), 1));
+//
+//            JTextPane t2 = new JTextPane();
+//            t2.setSize(350, 300);
+//
+//            final JTextPane t3 = t2;
+//
+//            JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+//            // t2.setEditable(false);
+//            JScrollPane pane = new JScrollPane();
+//            pane.setViewportView(t2);
+//            t2.setText((String) documentationTable.getValueAt(
+//                    documentationTable.getSelectedRow(), 2));
+//
+//            t.add(pane);
+//
+//            JButton saveButton = new JButton("Save");
+//            saveButton.addActionListener(new ActionListener() {
 //                @Override
-//                public void run() {
-//                    try{
-//                    while(true){
-//                        if(!thread.isAlive()){
-//                            thread.interrupt();
-//                            break;
-//                        }
-//                        Thread.sleep(1000);
-//                        
-//                    }
-//                    }
-//                    catch(Exception e){
-//                        
-//                    }
+//                public void actionPerformed(ActionEvent e) {
+//                    documentationTable.setValueAt((Object) t3.getText(),
+//                            documentationTable.getSelectedRow(), 2);
+//                    t.dispose();
 //                }
 //            });
-//                       thread2.start();
+//            panel.add(saveButton);
+//            JButton cancelButton = new JButton("Cancel");
+//            cancelButton.addActionListener(new ActionListener() {
+//                @Override
+//                public void actionPerformed(ActionEvent e) {
+//                    t.dispose();
+//                }
+//            });
+//            panel.add(cancelButton);
+//
+//            t.add(panel);
+//
+//            t.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+//            //-------------------------------------------------
+//            //Debug the error for 
+//
+//
+//            Runnable runnable = new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                    while (true) {
+//                        if (SimulationGUI.START_TIME != 0 && time == 0 && t.isVisible()) {
+////                                documentationTable.setValueAt((Object) t3.getText(),
+////							documentationTable.getSelectedRow(), 2);
+//                            t.dispose();
+//                            break;
+//                        }
+//                        try {
+//                            Thread.sleep(500);
+//                        } catch (Exception e) {
+//                            System.out.println("Timed exit");
+//                            return;
+//
+//                        }
+//                    }
+//                }
+//            };
+//
+//            final Thread thread = new Thread(runnable, "CHECKER!!!");
+//
+//            thread.start();
+//
+//            //------------------------------------------------
+//            t.setVisible(true);
+//
+//
+//
+//
+////                       Thread thread2 = new Thread(new Runnable() {
+////
+////                @Override
+////                public void run() {
+////                    try{
+////                    while(true){
+////                        if(!thread.isAlive()){
+////                            thread.interrupt();
+////                            break;
+////                        }
+////                        Thread.sleep(1000);
+////                        
+////                    }
+////                    }
+////                    catch(Exception e){
+////                        
+////                    }
+////                }
+////            });
+////                       thread2.start();
+//
+//
+//
+//        }
+//    }
 
-
-
-        }
-    }
-
-    private void printSampleButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        try {
-
-            setAlwaysOnTop(false);
-
-            PrinterJob job = PrinterJob.getPrinterJob();
-
-            PageFormat format = new PageFormat();
-            format.setOrientation(PageFormat.LANDSCAPE);
-
-            job.setPrintable(this, format);
-            if (job.printDialog()) {
-                job.print();
-            }
-            setAlwaysOnTop(true);
-        } catch (PrinterException ex) {
-            Logger.getLogger(SimulationGUI.class.getName()).log(Level.SEVERE,
-                    null, ex);
-        }
-    }
+   
 
     /**
      *
@@ -1045,7 +1348,7 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
                         unitsTextField.getText().equals("") ||
                         followUpTextField.getText().equals("") ||
                         initialsTextField.getText().equals("")) {
-                            JOptionPane.showMessageDialog(new JDialog(), "Error. Please fill in all fields.");
+                            JOptionPane.showMessageDialog(new JDialog(), "Please fill in all fields.");
                     }
                     else{
                         giveMedicationConfirmButtonActionPerformed(evt);
@@ -1202,7 +1505,6 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
             isGaveMed = true;
 
             medBdoc = isGaveMed && !didGiveMedAfterDoc;
-            // TODO add your handling code here:
             DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy");
             DateFormat dayFormat = new SimpleDateFormat("HH:mma");
 
@@ -1221,11 +1523,11 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
                 + marTable.getValueAt(
                 marTable.getSelectedRow(), 2)
                 + " \nNotes:\n"
-                + notesTextPane.getText()
-                + "\n\nTemperature:\nPulse:\nResp:\nBP:\nO2 Sat:\nPain Scale:\nFSBS:\nSite:\nRelated Diagnosis/Reason for medication:\n",
+                + notesTextPane.getText(),
+                //+ "\n\nTemperature:\nPulse:\nResp:\nBP:\nO2 Sat:\nPain Scale:\nFSBS:\nSite:\nRelated Diagnosis/Reason for medication:\n",
                 followUpTextField.getText(),
                 initialsTextField.getText()});
-            rootTabbedPane.setSelectedIndex(1);
+            rootTabbedPane.setSelectedIndex(0);
             documentationTable.setRowSelectionInterval(
                     documentationTable.getRowCount() - 1,
                     documentationTable.getRowCount() - 1);
@@ -1397,10 +1699,7 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
     private javax.swing.JLabel diagnosisText;
     private javax.swing.JLabel diagnosisText1;
     private javax.swing.JScrollPane docTabelHolder;
-    private javax.swing.JPanel documentationPane;
-    private javax.swing.JScrollPane documentationScrollPane;
     private javax.swing.JTable documentationTable;
-    private javax.swing.JPanel documentation_Panel;
     private javax.swing.JButton editNarrativeButton;
     private javax.swing.JButton giveMedicationButton;
     private javax.swing.JButton hourDueButton;
@@ -1409,9 +1708,11 @@ public class SimulationGUI extends javax.swing.JFrame implements Printable {
     private javax.swing.JLabel jcahoLabel;
     private javax.swing.JScrollPane jcahoScrollPane;
     private javax.swing.JPanel jcaho_Panel;
+    private javax.swing.JLabel logoLabel;
     private javax.swing.JScrollPane marScrollPane;
     private javax.swing.JTable marTable;
     private javax.swing.JPanel mar_Panel;
+    private javax.swing.JLabel medicalHistoryLabel;
     private javax.swing.JLabel patientNameLabel;
     private javax.swing.JLabel patientNameText;
     private javax.swing.JButton printSampleButton;

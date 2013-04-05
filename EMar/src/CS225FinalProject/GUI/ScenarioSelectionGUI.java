@@ -163,21 +163,23 @@ public class ScenarioSelectionGUI extends javax.swing.JFrame {
 
         startButton.setBackground(new java.awt.Color(255, 204, 51));
         startButton.setText("Start");
+        startButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 530, -1, -1));
+        getContentPane().add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 530, -1, -1));
 
         logOutButton.setBackground(new java.awt.Color(255, 204, 51));
         logOutButton.setText("Logout");
+        logOutButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
         logOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logOutButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(logOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 530, -1, -1));
+        getContentPane().add(logOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 530, -1, -1));
 
         logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/massbay.png"))); // NOI18N
         getContentPane().add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
