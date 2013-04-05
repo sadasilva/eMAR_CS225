@@ -223,13 +223,21 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                     
                 }
                 
-                if(studentManagerControlTabbedPane.getSelectedIndex()==1 && studentList.getSelectedIndex()<0)
-                    studentManagerControlTabbedPane.setSelectedIndex(0);
-                else if(studentManagerControlTabbedPane.getSelectedIndex()==0 &&studentList.getSelectedIndex()>-1){
-                    int selected = studentList.getSelectedIndex();
-                    studentList.clearSelection();
-                    studentList.setSelectedIndex(selected);
+                //!!KL
+                classControlJTable.getSelectionModel().setSelectionInterval(0, 0);
+                
+                if(studentManagerControlTabbedPane.getSelectedIndex()==1 && studentList.getSelectedIndex()<0) {
+                    studentList.setSelectedIndex(0);
                 }
+                //KL
+//!!KL
+// Commented out following code.                
+//                else if(studentManagerControlTabbedPane.getSelectedIndex()==0 &&studentList.getSelectedIndex()>-1){
+//                    int selected = studentList.getSelectedIndex();
+//                    studentList.clearSelection();
+//                    studentList.setSelectedIndex(selected);
+//                }
+//KL                
                 //else
                        // studentManagerControlTabbedPane.setVisible(false);
                    
@@ -376,7 +384,6 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         studentScrollPane = new javax.swing.JScrollPane();
         studentList = new javax.swing.JList();
         classScrollPaneLabel = new javax.swing.JLabel();
-        studentScrollPaneLabel = new javax.swing.JLabel();
         //!!KL
         addClassButton = new javax.swing.JButton();
         //!!KL
@@ -469,7 +476,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 
         scenarioManagerPanel.add(scenarioScrollPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 260, 76));
 
-        selectScenarioLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        selectScenarioLabel.setFont(new java.awt.Font("Tahoma", 0, 24));
         selectScenarioLabel.setText("Select Scenario to Edit");
         scenarioManagerPanel.add(selectScenarioLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
@@ -500,19 +507,19 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 
         marPanel.add(medScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 31, 932, 243));
 
-        roomNumLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        roomNumLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
         roomNumLabel.setText("Room:");
         marPanel.add(roomNumLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
-        diagnosisLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        diagnosisLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
         diagnosisLabel.setText("Diagnosis:");
         marPanel.add(diagnosisLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
 
-        patientNameLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        patientNameLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
         patientNameLabel.setText("Name:");
         marPanel.add(patientNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, -1, -1));
 
-        allergiesLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        allergiesLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
         allergiesLabel.setText("Allergies:");
         marPanel.add(allergiesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, -1, -1));
 
@@ -568,7 +575,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         });
         marPanel.add(removeMedicationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11));
         jLabel5.setText("Time limit in min:");
         marPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(764, 289, -1, -1));
         marPanel.add(timeTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(864, 286, 47, -1));
@@ -772,7 +779,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
         scenarioManagerPanel.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, 40, 120));
 
-        importExportAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        importExportAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 18));
         importExportAreaLabel.setText("Import and Export Scenario List");
         scenarioManagerPanel.add(importExportAreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, -1, -1));
 
@@ -853,7 +860,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         });
         classScrollPane.setViewportView(classList);
 
-        studentManagerPanel.add(classScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 55, 150, 120));
+        studentManagerPanel.add(classScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 55, 220, 120));
 
         studentList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         studentList.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -862,14 +869,14 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
             }
         });
         studentScrollPane.setViewportView(studentList);
+        //!!KL
+        studentScrollPane.setVisible(false);
+        //KL
 
-        studentManagerPanel.add(studentScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 55, 200, 120));
+        studentManagerPanel.add(studentScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 40, 120));
 
         classScrollPaneLabel.setText("Class");
         studentManagerPanel.add(classScrollPaneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
-
-        studentScrollPaneLabel.setText("Student");
-        studentManagerPanel.add(studentScrollPaneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
 
         addClassButton.setText("Add Class");
         addClassButton.addActionListener(new java.awt.event.ActionListener() {
@@ -915,17 +922,17 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         studentManagerPanel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 10, 180));
         //KL
 
-        removalAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        removalAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 24));
         removalAreaLabel.setForeground(new java.awt.Color(255, 0, 0));
         removalAreaLabel.setText("Removal");
         studentManagerPanel.add(removalAreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, -1, -1));
         //KL
 
-        selectionArealabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        selectionArealabel.setFont(new java.awt.Font("Tahoma", 0, 24));
         selectionArealabel.setText("Selection");
-        studentManagerPanel.add(selectionArealabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        studentManagerPanel.add(selectionArealabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        addingAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        addingAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 24));
         addingAreaLabel.setText("Adding");
         studentManagerPanel.add(addingAreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, -1));
         //KL
@@ -1015,7 +1022,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                     .addGroup(classControlPanelLayout.createSequentialGroup()
                         .addGap(363, 363, 363)
                         .addComponent(printAllStudentRecordsButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(427, Short.MAX_VALUE))
         );
         classControlPanelLayout.setVerticalGroup(
             classControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1135,21 +1142,21 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         studentControlPanel.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 50, 202));
         //KL
 
-        LoginModLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        LoginModLabel.setFont(new java.awt.Font("Tahoma", 0, 24));
         LoginModLabel.setText("Login Modification");
         studentControlPanel.add(LoginModLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 250, -1, -1));
 
-        currentStudentUserNameLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        currentStudentUserNameLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
         currentStudentUserNameLabel.setText("current Username");
         studentControlPanel.add(currentStudentUserNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, -1, -1));
         //KL
 
-        currentStudentPasswordLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        currentStudentPasswordLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
         currentStudentPasswordLabel.setText("current Password");
         studentControlPanel.add(currentStudentPasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, -1, -1));
         //KL
 
-        SimResultsAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        SimResultsAreaLabel.setFont(new java.awt.Font("Tahoma", 0, 24));
         SimResultsAreaLabel.setText("Simulation Results");
         studentControlPanel.add(SimResultsAreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
         //KL
@@ -1202,7 +1209,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         studentControlPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 290, -1, -1));
         //KL
 
-        currentStudentRealNameLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        currentStudentRealNameLabel.setFont(new java.awt.Font("Tahoma", 1, 11));
         currentStudentRealNameLabel.setText("current RealName");
         studentControlPanel.add(currentStudentRealNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 310, -1, -1));
         //KL
@@ -1238,7 +1245,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(logOutButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(962, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2335,11 +2342,13 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
             if (classControlJTable.getSelectedRow() != -1){
                     //Ketty: Added temp student object to obtain real name for use in JOptionPane window.
                     // Edited second message dialog.
-                   studentList.setSelectedIndex(classControlJTable.getSelectedRow());
+                   int classIndex = classControlJTable.getSelectedRow(); 
+                   studentList.setSelectedIndex(classIndex);
                    
                     
                    Student student1 = controller.getStudentByNameAndClassroom((String)studentList.getSelectedValue(), (String)classList.getSelectedValue());
-                    
+                   
+                   
                    if (student1 != null) {
                        if(JOptionPane.showConfirmDialog(this, "Are you sure you want to remove "+student1.getRealName()+
                                "?", null, JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION){
@@ -2985,7 +2994,6 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
     private javax.swing.JPanel studentManagerPanel;
     private javax.swing.JLabel studentNameLabel;
     private javax.swing.JScrollPane studentScrollPane;
-    private javax.swing.JLabel studentScrollPaneLabel;
     private javax.swing.JTable studentTable;
     private javax.swing.JTextField timeTextfield;
     private javax.swing.JButton viewSelectedNarrativeButton;
