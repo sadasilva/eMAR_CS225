@@ -161,7 +161,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
         });
                 
                 studentManagerControlTabbedPane.addChangeListener(new ChangeListener() {
-
+ 
             @Override
             public void stateChanged(ChangeEvent e) {
                 if(studentManagerControlTabbedPane.getSelectedIndex()==1 && studentList.getSelectedIndex()>-1){
@@ -262,8 +262,9 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 	}
 
 	private void loadStudentsByClass() {
-		studentListModel = new DefaultListModel();
+            studentListModel = new DefaultListModel();
 		studentList.setModel(studentListModel);
+                ArrayList<User> unsortedList = new ArrayList<User>();
 
 		for (User u : controller.getUsers()) {
 
@@ -273,10 +274,24 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
 							.equalsIgnoreCase(u.getClassName())) {
                             //!!KL
                             //Ketty: Changed getRealName() to getUserName()
-				studentListModel.addElement((String) u.getUserName());
+                            //!!JK : sorted the list
+                                unsortedList.add(u);
+                                
+				//studentListModel.addElement((String) u.getUserName());
                             //KL
 			}
 		}
+                Collections.sort(unsortedList,
+                                new Comparator<User>() {
+                                    public int compare(User user1, User user2) {
+                                        return user1.getUserName().compareToIgnoreCase(user2.getUserName());
+                                    }
+                                });
+
+                for (User userName : unsortedList){
+                    studentListModel.addElement(userName.getUserName());
+                }
+                //JK
 	}
 
 	/**
@@ -970,6 +985,11 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
             }
         });
         classControlJTable.getTableHeader().setReorderingAllowed(false);
+        classControlJTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                classControlJTableMouseClicked(evt);
+            }
+        });
         classControlScrollPane.setViewportView(classControlJTable);
         //KL
 
@@ -1084,7 +1104,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 viewSelectedScenarioButtonActionPerformed(evt);
             }
         });
-        studentControlPanel.add(viewSelectedScenarioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 200, -1));
+        studentControlPanel.add(viewSelectedScenarioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 210, -1));
         //KL
 
         studentNameLabel.setText("StudentName");
@@ -1140,7 +1160,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 setScenarioScoreButtonActionPerformed(evt);
             }
         });
-        studentControlPanel.add(setScenarioScoreButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 200, -1));
+        studentControlPanel.add(setScenarioScoreButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 210, -1));
         //KL
 
         jLabel3.setText("Current Student Password");
@@ -1157,7 +1177,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 editSelectedResultSuggestionButtonActionPerformed(evt);
             }
         });
-        studentControlPanel.add(editSelectedResultSuggestionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 200, -1));
+        studentControlPanel.add(editSelectedResultSuggestionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 210, -1));
         //KL
 
         deleteSelectedResultButton.setText("Delete Result");
@@ -1166,7 +1186,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 deleteSelectedResultButtonActionPerformed(evt);
             }
         });
-        studentControlPanel.add(deleteSelectedResultButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 200, -1));
+        studentControlPanel.add(deleteSelectedResultButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 210, -1));
         //KL
 
         printSelectedStudentRecordButton.setText("Print Current Student Record");
@@ -1175,7 +1195,7 @@ public class MaintenanceManagerGUI extends javax.swing.JFrame {
                 printSelectedStudentRecordButtonActionPerformed(evt);
             }
         });
-        studentControlPanel.add(printSelectedStudentRecordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 200, -1));
+        studentControlPanel.add(printSelectedStudentRecordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 210, -1));
         //KL
 
         jLabel12.setText("Current Student Real Name");
@@ -1677,10 +1697,14 @@ private void changeRealNameButtonActionPerformed(java.awt.event.ActionEvent evt)
                     if(student!=null){
                     
                     String newRealName = JOptionPane.showInputDialog("Enter a new name:");
-                    if(newRealName!= null && newRealName.matches(realNamePattern)){
-                        if(!newRealName.equals("")) {
+                    if(newRealName!= null){
+                        if(!newRealName.equals("") && newRealName.matches(realNamePattern)) {
                         student.setRealName(newRealName);
                         }
+                        //!!KL
+                        else if (!newRealName.equals("") && !newRealName.matches(realNamePattern))
+                        showMessageDialog(this, "The Real Name field only allows letters, spaces and dashes.", "Error", OK_OPTION);
+                        //KL
                         else{
                             showMessageDialog(this,"Please enter an appropriate name.",null, OK_OPTION);
                         }
@@ -1689,10 +1713,7 @@ private void changeRealNameButtonActionPerformed(java.awt.event.ActionEvent evt)
                         studentManagerControlTabbedPane.setSelectedIndex(0);
                         studentManagerControlTabbedPane.setSelectedIndex(1);
                         
-                    }
-                    else
-                        showMessageDialog(this, "The Real Name field only allows letters, spaces and dashes.", "Error", OK_OPTION);
-                        
+                    }                 
                 }
     }
 }//GEN-LAST:event_changeRealNameButtonActionPerformed
@@ -1700,6 +1721,20 @@ private void changeRealNameButtonActionPerformed(java.awt.event.ActionEvent evt)
 private void studentManagerPanelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_studentManagerPanelPropertyChange
 // TODO add your handling code here:
 }//GEN-LAST:event_studentManagerPanelPropertyChange
+
+
+//!!KL
+private void classControlJTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classControlJTableMouseClicked
+// TODO add your handling code here:
+    if (evt.getClickCount() == 2) {
+        System.out.println("Yes, you doubleclicked me."); //Test
+        studentList.setSelectedIndex(classControlJTable.getSelectedRow());
+        studentManagerControlTabbedPane.setSelectedIndex(1);
+    }
+}//GEN-LAST:event_classControlJTableMouseClicked
+//KL
+
+
 //!!JR
     private void roomNumberTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_roomNumberTextFieldKeyTyped
         // TODO add your handling code here:
@@ -1737,7 +1772,7 @@ private void studentManagerPanelPropertyChange(java.beans.PropertyChangeEvent ev
                        //Added username column to table.
                        user.getUserName(),
                        //KL
-                      (((Student)user).getAverageScore() != null ? ((Student)user).getAverageScore():"not available"),
+                      (((Student)user).getAverageScore() != null ? ((Student)user).getAverageScore():"Not Available"),
                        new Integer( ((Student)user).getCompletedScenarios().size())});
                    if(((Student)user).getAverageScore()!=null){
                       if(sumAVG==null)
@@ -2291,14 +2326,18 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
 	}
         
     //!!KL    
+        
 	private void removeStudentButtonActionPerformed(
 			java.awt.event.ActionEvent evt) {
 
                 
-		if (studentList.getSelectedIndex() != -1) {
+		//if (studentList.getSelectedIndex() != -1) {
+            if (classControlJTable.getSelectedRow() != -1){
                     //Ketty: Added temp student object to obtain real name for use in JOptionPane window.
                     // Edited second message dialog.
-            
+                   studentList.setSelectedIndex(classControlJTable.getSelectedRow());
+                   
+                    
                    Student student1 = controller.getStudentByNameAndClassroom((String)studentList.getSelectedValue(), (String)classList.getSelectedValue());
                     
                    if (student1 != null) {
@@ -2393,6 +2432,8 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
                 }
 	}
 
+        //!!KL
+        // Added option of printing class's student records before deleting class.
 	private void removeClassButtonActionPerformed(ActionEvent evt) {
 
             if(classList.getSelectedIndex()>-1){
@@ -2403,6 +2444,47 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
 		if (n == JOptionPane.YES_OPTION) {
 			if (controller.removeClass((String) classList.getSelectedValue())
 					&& classList.getSelectedIndex() > -1) {
+                            
+                            if (JOptionPane.showConfirmDialog(this, "Would you like to print this class's student records before removal?",
+                                    null, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                                try {
+			PrinterJob job = PrinterJob.getPrinterJob();
+                        int index = classList.getSelectedIndex();
+                        
+                        if (job.printDialog()){
+                            PageFormat format = new PageFormat();
+                                format.setOrientation(PageFormat.LANDSCAPE);
+                            for(int i =0; i<studentList.getModel().getSize();i++){
+                                studentList.setSelectedIndex(i);
+                                
+                                Student student = controller.getStudentByNameAndClassroom(
+                                (String)studentList.getSelectedValue(),
+                                (String)classList.getSelectedValue());
+
+                                Printable printable = studentTable.getPrintable(JTable.PrintMode.FIT_WIDTH, 
+                                        new MessageFormat(
+                                        student.getRealName()+ " "+
+                                        student.getClassName()+
+                                        " Report as of "+new SimpleDateFormat("M-d-yy").format(Calendar.getInstance().getTime())), 
+
+                                        new MessageFormat(
+                                        "Completed Scenarios:"+student.getCompletedScenarios().size()+
+                                        //!!KL
+                                        " Average Score: "+ (student.getAverageScore()==null?"Not Available":student.getAverageScore()) + 
+                                        " Page - {0}"));
+                                        //KL
+                                        job.setPrintable(printable, format);
+                                        job.print();
+                            }
+                        }
+                        studentList.clearSelection();
+                        classControlJTable.clearSelection();
+                        classList.setSelectedIndex(index);
+		} catch (PrinterException ex) {
+			Logger.getLogger(SimulationGUI.class.getName()).log(Level.SEVERE,
+					null, ex);
+		}
+                            }
 				sessionListModel.remove(classList.getSelectedIndex());
                                 for(User u:controller.getUsers()){
                                     if(!u.isInstructor())
@@ -2411,14 +2493,8 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
                                 }
                                 controller.writeUsers();
 				controller.writeClassNames();
-			} else {
-       //!!KL
-       // Ketty: Both messages tweaked.
-				System.out.println("Class not removed!");
-				// class removal unsuccessful -try again!
-                                
-			}
-		}
+
+		}}
             }
             else
                 JOptionPane.showMessageDialog(this, "Please select a class to remove.", null, JOptionPane.OK_OPTION);
@@ -2461,26 +2537,33 @@ private void rootTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {
                     // Also added "newUsername.matches..." in following if statement.
                     String newUsername = JOptionPane.showInputDialog("Enter a new username:");
                    
-                    if(newUsername!= null && newUsername.matches(userNamePattern)){
+                    //!!KL
+                    if(newUsername!= null){
                         if(controller.isUserNameAvailable(newUsername)){
                         
                         
-                        if(!newUsername.equals(""))
-                        student.setUserName(newUsername);
+                        if(!newUsername.equals("") && newUsername.matches(userNamePattern))
+                            student.setUserName(newUsername);
+                        
+                        else if (!newUsername.equals("") && !newUsername.matches(userNamePattern))
+                        showMessageDialog(this, "The Username field only allows letters, numbers, periods and underscores.", "Error", OK_OPTION);
                         else{
                             showMessageDialog(this,"Please enter an appropriate username.",null, OK_OPTION);
                         }
-                        
                         controller.writeUsers();
-                        studentManagerControlTabbedPane.setSelectedIndex(0);
-                        studentManagerControlTabbedPane.setSelectedIndex(1);
+                        int sIndex = studentList.getSelectedIndex();
+                        int cIndex = classList.getSelectedIndex();
+                        classList.clearSelection();
+                        classList.setSelectedIndex(cIndex);
+                        studentList.setSelectedIndex(sIndex);
+                        
                         }
                         else
                             showMessageDialog(this,"Sorry, this username is already in use.",null,OK_OPTION);
                     }
-                    else
-                        showMessageDialog(this, "The Username field only allows letters, numbers, periods and underscores.", "Error", OK_OPTION);
-                        
+                    
+
+                    //KL
                     }
                 }
             
